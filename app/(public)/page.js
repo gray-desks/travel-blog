@@ -48,9 +48,9 @@ export default async function Page({ searchParams }) {
               type="text"
               name="q"
               id="q"
-              placeholder="タイトルで検索"
+              placeholder="キーワードで検索"
               defaultValue={q}
-              aria-label="タイトルを検索"
+              aria-label="キーワードで検索"
               style={{ padding:'10px 12px', border:'1px solid #ddd', borderRadius:8, background:'#fff' }}
             />
           </div>

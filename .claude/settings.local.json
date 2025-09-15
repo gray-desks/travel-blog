@@ -9,7 +9,12 @@
       "mcp__serena__activate_project",
       "mcp__serena__read_file",
       "mcp__serena__search_for_pattern",
-      "mcp__serena__execute_shell_command"
+      "mcp__serena__execute_shell_command",
+      "Bash(npx sanity dev:*)",
+      "Read(//Users/yamazaki/旅ログ記事生成/studio/**)",
+      "Bash(xargs kill:*)",
+      "mcp__serena__create_text_file",
+      "mcp__serena__replace_regex"
     ],
     "deny": [],
     "ask": []

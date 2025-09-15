@@ -1,6 +1,16 @@
 // Next.js のクライアント遷移用コンポーネント
 // 記事詳細ページへのリンク生成に使用します
 import Link from 'next/link'
+import Image from 'next/image'
+
+// 英語の種別値を日本語ラベルに変換
+const TYPE_LABELS = {
+  spot: '観光スポット',
+  food: 'グルメ',
+  transport: '交通',
+  hotel: '宿泊',
+  column: 'コラム',
+}
 
 // 記事カードを描画するプレゼンテーショナルコンポーネント
 // props: article（記事データ: slug, title, mainImage, type, prefecture, publishedAt 等）
@@ -19,22 +29,28 @@ export default function ArticleCard({ article }) {
         {/* アクセシビリティのためリンクに aria-label を付与 */}
         <Link prefetch href={href} aria-label={article.title || '記事を見る'}>
           {img ? (
-            // 画像がある場合は <img> を表示（alt はタイトル、無ければ空文字）
-            <img
-              className="card-img"
-              src={img}
-              alt={article.title || ''}
-              loading="lazy"
-              decoding="async"
-            />
+            // 画像がある場合は Next.js の最適化 Image を使用
+            <div className="card-img" style={{ position:'relative', overflow:'hidden' }}>
+              <Image
+                src={img}
+                alt={article.title || ''}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                quality={70}
+                style={{ objectFit: 'cover' }}
+                priority={false}
+              />
+            </div>
           ) : (
             // 画像が無い場合はプレースホルダー要素を表示（装飾のみのため aria-hidden）
             <div className="card-img" aria-hidden="true" />
           )}
         </Link>
-        {/* 記事タイプのラベル（例: travel, food 等）。type があるときのみ表示 */}
+        {/* 記事タイプのラベル（CSSクラスは英語値を使用し、表示は日本語に変換） */}
         {article.type && (
-          <span className={`card-label card-label--${article.type}`}>{article.type}</span>
+          <span className={`card-label card-label--${article.type}`}>
+            {TYPE_LABELS[article.type] || article.type}
+          </span>
         )}
       </div>
       {/* テキスト本文領域 */}

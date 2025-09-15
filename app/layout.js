@@ -2,6 +2,7 @@
 // - App Router の layout.js は子ページを受け取り、共通ヘッダー/フッターを適用
 // - Server Component（デフォルト）
 import './styles.css'
+import Header from '@components/Header'
 
 export const metadata = {
   // 既定のメタデータ（各ページの generateMetadata/metadata で上書き可能）
@@ -18,29 +19,12 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
       </head>
       {/* グローバルなボディ設定と共通のレイアウト枠 */}
-      <body style={{ margin: 0, fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', lineHeight: 1.6 }}>
+      <body style={{ margin: 0, fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', lineHeight: 1.6, display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
         {/* サイト共通ヘッダー */}
-        <header className="site-header">
-          <div className="container header-inner">
-            {/* サイトロゴ／ブランド（トップへのリンク） */}
-            <a href="/" className="brand">
-              <span className="brand-logo" aria-hidden="true">旅</span>
-              <span className="brand-name">旅ログ</span>
-            </a>
-            {/* グローバルナビ（ダミーリンク可） */}
-            <nav aria-label="グローバルナビ" style={{ marginLeft: 'auto' }}>
-              <ul style={{ listStyle: 'none', display: 'flex', gap: 16, margin: 0, padding: 0 }}>
-                <li><a href="/" style={{ color: '#111', textDecoration: 'none' }}>記事一覧</a></li>
-                <li><a href="/about" style={{ color: '#111', textDecoration: 'none' }}>このサイトについて</a></li>
-                <li><a href="/contact" style={{ color: '#111', textDecoration: 'none' }}>お問い合わせ</a></li>
-                <li><a href="/privacy" style={{ color: '#111', textDecoration: 'none' }}>プライバシーポリシー</a></li>
-              </ul>
-            </nav>
-          </div>
-        </header>
+        <Header />
 
         {/* ページ固有コンテンツを描画するメイン領域 */}
-        <main className="container" style={{ padding: '24px' }}>
+        <main className="container" style={{ padding: '24px', flex: '1 0 auto' }}>
           {children}
         </main>
 
