@@ -3,8 +3,7 @@
 // - Sanity から記事データを取得して表示
 // route-group: (public)
 import { notFound } from 'next/navigation'
-import { client } from '@lib/sanityClient'
-import { articleBySlugQuery } from '@lib/queries'
+import { getArticleBySlugCached } from '@lib/queries'
 import { renderPortableTextLite } from '@lib/portableTextLite'
 
 // ISR 設定: 60秒ごとに再検証して静的ページを自動更新
@@ -15,7 +14,7 @@ export default async function ArticlePage({ params }) {
   const { slug } = params
 
   // スラッグをもとに Sanity から記事を取得（存在しない場合は null）
-  const article = await client.fetch(articleBySlugQuery, { slug })
+  const article = await getArticleBySlugCached(slug)
 
   // 該当記事が無ければ 404 ページへ遷移
   if (!article) return notFound()
@@ -38,6 +37,8 @@ export default async function ArticlePage({ params }) {
           src={article.mainImage.asset.url}
           alt={article.title || ''}
           className="article-cover"
+          loading="lazy"
+          decoding="async"
         />
       )}
 
@@ -56,7 +57,7 @@ export default async function ArticlePage({ params }) {
 export async function generateMetadata({ params }) {
   // メタデータ生成用に記事タイトルを取得
   const { slug } = params
-  const article = await client.fetch(articleBySlugQuery, { slug })
+  const article = await getArticleBySlugCached(slug)
 
   // 記事が無い場合はデフォルトタイトルを返す
   return {

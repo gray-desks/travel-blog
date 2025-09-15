@@ -17,10 +17,16 @@ export default function ArticleCard({ article }) {
       {/* 画像・ラベルを含むメディア領域 */}
       <div className="card-media">
         {/* アクセシビリティのためリンクに aria-label を付与 */}
-        <Link href={href} aria-label={article.title || '記事を見る'}>
+        <Link prefetch href={href} aria-label={article.title || '記事を見る'}>
           {img ? (
             // 画像がある場合は <img> を表示（alt はタイトル、無ければ空文字）
-            <img className="card-img" src={img} alt={article.title || ''} />
+            <img
+              className="card-img"
+              src={img}
+              alt={article.title || ''}
+              loading="lazy"
+              decoding="async"
+            />
           ) : (
             // 画像が無い場合はプレースホルダー要素を表示（装飾のみのため aria-hidden）
             <div className="card-img" aria-hidden="true" />
