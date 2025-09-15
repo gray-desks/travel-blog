@@ -4,7 +4,6 @@
 - `app/` — Next.js App Router pages and layouts (e.g., `app/articles/[slug]/page.js`).
 - `lib/` — Sanity client, GROQ queries, and lightweight Portable Text renderer.
 - `studio/` — Sanity Studio (content authoring). Independent `package.json` and scripts.
-- `scripts/` — Utilities like `scripts/sanity-smoke-test.js`.
 - `.next/` — Build output (do not edit). Root `next.config.js` configures Next.
 
 ## Build, Test, and Development Commands
@@ -16,7 +15,6 @@
   - `npm run dev` — Start Sanity Studio locally.
   - `npm run build` — Static build of Studio.
   - `npm run deploy` — Deploy Studio to Sanity.
-- Sanity smoke test: `node scripts/sanity-smoke-test.js` (verifies read access).
 
 ## Coding Style & Naming Conventions
 - JavaScript (Node >= 18), 2‑space indentation, single quotes preferred.
@@ -26,7 +24,7 @@
 - Modules in `lib/` use camelCase filenames (e.g., `sanityClient.js`).
 
 ## Testing Guidelines
-- No formal test runner yet. Use the smoke test and manual checks:
+- No formal test runner yet. Use manual checks:
   - Ensure `.env.local` has `NEXT_PUBLIC_SANITY_PROJECT_ID`.
   - Run the app and verify article list/detail pages render.
 - If adding tests, place them under `__tests__/` and prefer Jest for units and Playwright for E2E.
@@ -41,4 +39,3 @@
 - App uses a single env var: `NEXT_PUBLIC_SANITY_PROJECT_ID`.
 - For Studio, `projectId`/`dataset` are fixed; manage CORS in Sanity.
 - Validate external links and sanitize any added renderers.
-

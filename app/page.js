@@ -3,6 +3,7 @@ import { client } from '../lib/sanityClient'
 import { articlesQuery, buildArticlesQuery } from '../lib/queries'
 import Hero from '../components/Hero'
 import ArticleCard from '../components/ArticleCard'
+import ResetButton from '../components/ResetButton'
 
 export const revalidate = 60
 
@@ -65,7 +66,7 @@ export default async function Page({ searchParams }) {
             </select>
             <div className="filters-actions" style={{ justifySelf:'end', display:'flex', gap:12 }}>
               <button type="submit" className="btn btn-primary">検索</button>
-              <Link href="/" className="btn btn-secondary">リセット</Link>
+              <ResetButton />
             </div>
           </div>
         </form>
