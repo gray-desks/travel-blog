@@ -1,0 +1,16 @@
+{
+  "name": "studio-travel",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "sanity": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
