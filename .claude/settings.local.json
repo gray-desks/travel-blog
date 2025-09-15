@@ -14,7 +14,9 @@
       "Bash(git push:*)",
       "Bash(gh auth:*)",
       "Bash(git remote set-url:*)",
-      "Bash(git clone:*)"
+      "Bash(git clone:*)",
+      "Bash(lsof:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []

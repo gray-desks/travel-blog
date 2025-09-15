@@ -11,24 +11,31 @@ export default async function ArticlePage({ params }) {
   if (!article) return notFound()
 
   return (
-    <article>
-      <h1 style={{ fontSize: 28, fontWeight: 700 }}>{article.title}</h1>
+    <article className="narrow">
+      <h1 className="article-title">{article.title}</h1>
       {article.publishedAt && (
-        <p style={{ color: '#888', fontSize: 14, marginTop: 4 }}>
+        <p className="article-sub">
           {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
         </p>
       )}
       {article.mainImage?.asset?.url && (
         <img
           src={article.mainImage.asset.url}
-          alt=""
-          style={{ width: '100%', borderRadius: 6, margin: '16px 0' }}
+          alt={article.title || ''}
+          className="article-cover"
         />
       )}
-      <div
-        style={{ marginTop: 12, fontSize: 16 }}
+      <div className="prose" style={{ fontSize: 16 }}
         dangerouslySetInnerHTML={{ __html: renderPortableTextLite(article.body) }}
       />
     </article>
   )
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params
+  const article = await client.fetch(articleBySlugQuery, { slug })
+  return {
+    title: article?.title ? `${article.title}` : '記事',
+  }
 }
