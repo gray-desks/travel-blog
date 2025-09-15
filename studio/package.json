@@ -8,7 +8,8 @@
     "deploy": "sanity deploy"
   },
   "dependencies": {
-    "sanity": "latest"
+    "sanity": "latest",
+    "styled-components": "^6.1.19"
   },
   "engines": {
     "node": ">=18"

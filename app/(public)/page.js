@@ -55,15 +55,15 @@ export default async function Page({ searchParams }) {
             />
           </div>
           <div className="filters-row" style={{ display:'grid', gap:12, gridTemplateColumns:'1fr 1fr auto', alignItems:'center' }}>
-            {/* 種別フィルタ */}
-            <label htmlFor="type" className="sr-only">種別</label>
-            <select id="type" name="type" defaultValue={type} aria-label="種別" style={{ padding:'10px 12px', border:'1px solid #ddd', borderRadius:8, background:'#fff' }}>
-              <option value="">種別（すべて）</option>
-              <option value="spot">spot</option>
-              <option value="food">food</option>
-              <option value="transport">transport</option>
-              <option value="hotel">hotel</option>
-              <option value="column">column</option>
+            {/* 分類フィルタ */}
+            <label htmlFor="type" className="sr-only">分類</label>
+            <select id="type" name="type" defaultValue={type} aria-label="分類" style={{ padding:'10px 12px', border:'1px solid #ddd', borderRadius:8, background:'#fff' }}>
+              <option value="">分類（すべて）</option>
+              <option value="spot">観光スポット</option>
+              <option value="food">グルメ</option>
+              <option value="transport">交通</option>
+              <option value="hotel">宿泊</option>
+              <option value="column">コラム</option>
             </select>
             {/* 都道府県フィルタ */}
             <label htmlFor="prefecture" className="sr-only">都道府県</label>
