@@ -13,6 +13,10 @@ export default function RootLayout({ children }) {
   return (
     // 言語属性を付与したHTMLルート
     <html lang="ja">
+      <head>
+        {/* Sanity CDN への事前接続で画像読み込みを高速化 */}
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+      </head>
       {/* グローバルなボディ設定と共通のレイアウト枠 */}
       <body style={{ margin: 0, fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', lineHeight: 1.6 }}>
         {/* サイト共通ヘッダー */}
