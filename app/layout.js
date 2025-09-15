@@ -37,7 +37,12 @@ export default function RootLayout({ children }) {
               </div>
             </div>
           </div>
-          <div className="container footer-bottom">© {new Date().getFullYear()} 旅ログ</div>
+          <div className="container footer-bottom">
+            <div style={{ display:'flex', gap:16, justifyContent:'center', flexWrap:'wrap', marginBottom:8 }}>
+              <a href="/privacy" style={{ color:'#cbd5e1', textDecoration:'underline' }}>プライバシーポリシー</a>
+            </div>
+            © {new Date().getFullYear()} 旅ログ
+          </div>
         </footer>
       </body>
     </html>
