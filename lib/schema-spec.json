@@ -1,0 +1,93 @@
+{
+  "document": "article",
+  "title": "Article",
+  "fields": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "slug",
+      "required": true,
+      "source": "title",
+      "maxLength": 96
+    },
+    "lang": {
+      "type": "string",
+      "required": true,
+      "default": "ja",
+      "options": ["ja", "en", "zh-cn", "ko", "fi", "da", "sv", "pl", "nl"]
+    },
+    "translationOf": {
+      "type": "reference",
+      "to": "article",
+      "weak": true
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "options": ["spot", "food", "transport", "hotel", "note"]
+    },
+    "placeName": {
+      "type": "string"
+    },
+    "prefecture": {
+      "type": "string",
+      "required": true,
+      "options": [
+        "hokkaido", "aomori", "iwate", "miyagi", "akita", "yamagata", "fukushima",
+        "ibaraki", "tochigi", "gunma", "saitama", "chiba", "tokyo", "kanagawa",
+        "niigata", "toyama", "ishikawa", "fukui", "yamanashi", "nagano",
+        "gifu", "shizuoka", "aichi", "mie", "shiga", "kyoto", "osaka",
+        "hyogo", "nara", "wakayama", "tottori", "shimane", "okayama",
+        "hiroshima", "yamaguchi", "tokushima", "kagawa", "ehime", "kochi",
+        "fukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki",
+        "kagoshima", "okinawa"
+      ]
+    },
+    "publishedAt": {
+      "type": "datetime",
+      "required": true
+    },
+    "coverImage": {
+      "type": "image",
+      "hotspot": true
+    },
+    "gallery": {
+      "type": "array",
+      "of": ["image"],
+      "maxItems": 12
+    },
+    "content": {
+      "type": "array",
+      "of": ["block", "image", "affiliate"],
+      "required": true
+    },
+    "tags": {
+      "type": "array",
+      "of": ["string"]
+    }
+  },
+  "customTypes": {
+    "affiliate": {
+      "type": "object",
+      "fields": {
+        "service": {
+          "type": "string",
+          "required": true,
+          "options": ["booking", "rakuten", "klook"]
+        },
+        "url": {
+          "type": "url",
+          "required": true
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "text"
+        }
+      }
+    }
+  }
+}

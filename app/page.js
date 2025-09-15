@@ -1,30 +1,34 @@
 import Link from 'next/link';
 import { client } from '../lib/sanityClient';
+import { japaneseArticlesQuery } from '../lib/queries';
 
 export const revalidate = 60; // ISR 60秒
 
 export default async function Page() {
-  const posts = await client.fetch(`
-    *[_type == "post"] | order(publishedAt desc)[0...20]{
-      _id,
-      title,
-      "slug": slug.current,
-      publishedAt,
-      excerpt
-    }
-  `);
+  const articles = await client.fetch(japaneseArticlesQuery);
 
   return (
     <main>
-      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 16 }}>ブログ</h1>
+      <h1 style={{ fontSize: 28, fontWeight: 700, marginBottom: 16 }}>旅ブログ</h1>
       <ul style={{ padding: 0, listStyle: 'none', margin: 0 }}>
-        {posts.map((p) => (
-          <li key={p._id} style={{ padding: '12px 0', borderBottom: '1px solid #eee' }}>
-            <Link href={`/posts/${p.slug}`} style={{ fontSize: 18, fontWeight: 600, textDecoration: 'underline' }}>
-              {p.title}
+        {articles.map((article) => (
+          <li key={article._id} style={{ padding: '12px 0', borderBottom: '1px solid #eee' }}>
+            <Link href={`/articles/${article.slug}`} style={{ fontSize: 18, fontWeight: 600, textDecoration: 'underline' }}>
+              {article.title}
             </Link>
-            {p.excerpt && (
-              <p style={{ margin: '6px 0 0', color: '#666', fontSize: 14 }}>{p.excerpt}</p>
+            <div style={{ margin: '6px 0 0', fontSize: 12, color: '#888' }}>
+              {article.type} • {article.prefecture}
+              {article.placeName && ` • ${article.placeName}`}
+            </div>
+            {article.excerpt && (
+              <p style={{ margin: '6px 0 0', color: '#666', fontSize: 14 }}>{article.excerpt}</p>
+            )}
+            {article.coverImageUrl && (
+              <img
+                src={article.coverImageUrl}
+                alt=""
+                style={{ width: '100px', height: '60px', objectFit: 'cover', borderRadius: 4, marginTop: 8 }}
+              />
             )}
           </li>
         ))}
