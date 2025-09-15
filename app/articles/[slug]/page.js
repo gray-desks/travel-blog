@@ -6,7 +6,8 @@ import { renderPortableTextLite } from '../../../lib/portableTextLite'
 export const revalidate = 60
 
 export default async function ArticlePage({ params }) {
-  const article = await client.fetch(articleBySlugQuery, { slug: params.slug })
+  const { slug } = await params
+  const article = await client.fetch(articleBySlugQuery, { slug })
   if (!article) return notFound()
 
   return (

@@ -13,7 +13,7 @@ export default async function Page() {
       <ul style={{ padding: 0, listStyle: 'none', margin: 0 }}>
         {articles.map(a => (
           <li key={a._id} style={{ padding: '12px 0', borderBottom: '1px solid #eee' }}>
-            <Link href={`/articles/${a.slug}`} style={{ fontSize: 18, fontWeight: 600, textDecoration: 'underline' }}>
+            <Link href={`/articles/${encodeURIComponent(a.slug)}`} style={{ fontSize: 18, fontWeight: 600, textDecoration: 'underline' }}>
               {a.title}
             </Link>
             {a.excerpt && <p style={{ margin: '6px 0 0', color: '#666', fontSize: 14 }}>{a.excerpt}</p>}
