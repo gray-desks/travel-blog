@@ -11,7 +11,7 @@ export const revalidate = 60
 
 export default async function ArticlePage({ params }) {
   // 動的セグメントから記事スラッグを取得
-  const { slug } = await params
+  const { slug } = params
 
   // スラッグをもとに Sanity から記事を取得（存在しない場合は null）
   const article = await client.fetch(articleBySlugQuery, { slug })
@@ -54,7 +54,7 @@ export default async function ArticlePage({ params }) {
 
 export async function generateMetadata({ params }) {
   // メタデータ生成用に記事タイトルを取得
-  const { slug } = await params
+  const { slug } = params
   const article = await client.fetch(articleBySlugQuery, { slug })
 
   // 記事が無い場合はデフォルトタイトルを返す
