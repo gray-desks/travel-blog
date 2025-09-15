@@ -23,10 +23,10 @@ export default function RootLayout({ children }) {
         {/* サイト共通ヘッダー */}
         <Header />
 
-        {/* ページ固有コンテンツを描画するメイン領域 */}
-        <main className="container" style={{ padding: '24px', flex: '1 0 auto' }}>
+        {/* ページ固有コンテンツを描画する主要コンテナ（各ページで <main> を持つためここは div） */}
+        <div className="container" style={{ padding: '24px', flex: '1 0 auto' }}>
           {children}
-        </main>
+        </div>
 
         {/* サイト共通フッター（1セクションに集約） */}
         <footer className="site-footer">

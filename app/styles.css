@@ -12,19 +12,20 @@
   --bg:#fafafa;
 }
 
+/* ボックスサイズを境界含めて計算（横スクロールの防止） */
+*, *::before, *::after{ box-sizing: border-box; }
+
 /*
   ページ全体のベーススタイル
   - 背景色と文字色
   - 共通コンテナの最大幅と左右余白
 */
 html,body{ background:var(--bg); color:#111; }
-.container{ max-width:1600px; margin:0 auto; padding: 0 var(--space-4); }
+.container{ max-width:1440px; margin:0 auto; padding: 0 var(--space-4); }
 
 /* main のコンテナ幅はPCでも段階的に拡張（レスポンシブ） */
-main.container{ max-width: 100%; }
-@media(min-width:1024px){ main.container{ max-width: 1200px; } }
-@media(min-width:1280px){ main.container{ max-width: 1400px; } }
-@media(min-width:1536px){ main.container{ max-width: 1600px; } }
+/* main は .container の幅に追従（はみ出し防止） */
+main.container{ max-width: inherit; }
 
 /*
   ヘッダー / フッター
@@ -184,7 +185,9 @@ body.no-scroll{ overflow:hidden; }
 .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
 /* レイアウト補助（本文幅を狭めて読みやすく） */
-.narrow{ max-width: 760px; margin: 0 auto; }
+.narrow{ max-width: 840px; margin: 0 auto; }
+@media(min-width:1280px){ .narrow{ max-width: 960px; } }
+@media(min-width:1536px){ .narrow{ max-width: 1040px; } }
 
 /* ページャー（前/次リンクの見た目） */
 .pager a{ display:inline-block; padding:8px 12px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; box-shadow: var(--shadow); }

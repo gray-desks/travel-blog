@@ -77,14 +77,6 @@ export default defineType({
     // 公開日時（任意）: 一覧の並び替え等で使用想定
     defineField({ name: 'publishedAt', title: '公開日時', type: 'datetime' }),
 
-    // 概要（任意）: 抜粋やメタディスクリプション用の短文
-    defineField({
-      name: 'excerpt',
-      title: '概要（抜粋）',
-      type: 'text',
-      rows: 3
-    }),
-
     // 言語（任意）: 既定は ja（initialValue で設定）
     defineField({ name: 'lang', title: 'Language', type: 'string' }),
 
@@ -115,24 +107,22 @@ export default defineType({
     // 場所名（任意）: 施設名やスポット名など自由入力
     defineField({ name: 'placeName', title: '場所名', type: 'string' }),
 
-    // メイン画像: 記事のキービジュアル。hotspot 有効、代替テキストを任意入力
+    // メイン画像: 記事のキービジュアル。hotspot 有効
     defineField({
       name: 'mainImage',
       title: 'メイン画像',
       type: 'image',
-      options: { hotspot: true },
-      fields: [{ name: 'alt', type: 'string', title: '代替テキスト' }]
+      options: { hotspot: true }
     }),
 
-    // ギャラリー（任意）: 追補の画像群。各画像に代替テキストを付与可能
+    // ギャラリー（任意）: 追補の画像群
     defineField({
       name: 'gallery',
       title: 'ギャラリー',
       type: 'array',
       of: [{
         type: 'image',
-        options: { hotspot: true },
-        fields: [{ name: 'alt', type: 'string', title: '代替テキスト' }]
+        options: { hotspot: true }
       }]
     }),
 
