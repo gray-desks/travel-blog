@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { client } from '@/lib/sanityClient'
-import { articlesQuery } from '@/lib/queries'
+import { client } from '../lib/sanityClient'
+import { articlesQuery } from '../lib/queries'
 
 export const revalidate = 60
 

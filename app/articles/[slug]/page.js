@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
-import { client } from '@/lib/sanityClient'
-import { articleBySlugQuery } from '@/lib/queries'
-import { renderPortableTextLite } from '@/lib/portableTextLite'
+import { client } from '../../../lib/sanityClient'
+import { articleBySlugQuery } from '../../../lib/queries'
+import { renderPortableTextLite } from '../../../lib/portableTextLite'
 
 export const revalidate = 60
 
