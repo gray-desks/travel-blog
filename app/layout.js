@@ -23,6 +23,15 @@ export default function RootLayout({ children }) {
               <span className="brand-logo" aria-hidden="true">旅</span>
               <span className="brand-name">旅ログ</span>
             </a>
+            {/* グローバルナビ（ダミーリンク可） */}
+            <nav aria-label="グローバルナビ" style={{ marginLeft: 'auto' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', gap: 16, margin: 0, padding: 0 }}>
+                <li><a href="/" style={{ color: '#111', textDecoration: 'none' }}>記事一覧</a></li>
+                <li><a href="/about" style={{ color: '#111', textDecoration: 'none' }}>このサイトについて</a></li>
+                <li><a href="/contact" style={{ color: '#111', textDecoration: 'none' }}>お問い合わせ</a></li>
+                <li><a href="/privacy" style={{ color: '#111', textDecoration: 'none' }}>プライバシーポリシー</a></li>
+              </ul>
+            </nav>
           </div>
         </header>
 
@@ -31,9 +40,8 @@ export default function RootLayout({ children }) {
           {children}
         </main>
 
-        {/* サイト共通フッター */}
+        {/* サイト共通フッター（1セクションに集約） */}
         <footer className="site-footer">
-          {/* 視覚的なヒーローブロック（ブランド/簡易統計） */}
           <div className="footer-hero">
             <div className="container footer-inner">
               {/* ブランド表示（ロゴ + キャッチ） */}
@@ -44,21 +52,19 @@ export default function RootLayout({ children }) {
                   <div className="footer-tagline">日本の旅の記録をゆるく発信</div>
                 </div>
               </div>
-              {/* 簡易統計（ダミー） */}
-              <div className="footer-stats">
-                <div className="stat-card"><div className="stat-num">20+</div><div className="stat-label">都道府県</div></div>
-                <div className="stat-card"><div className="stat-num">x</div><div className="stat-label">観光</div></div>
-                <div className="stat-card"><div className="stat-num">x</div><div className="stat-label">グルメ</div></div>
-              </div>
+              {/* フッターナビ（重要ページ） */}
+              <nav aria-label="フッターナビ">
+                <ul style={{ listStyle: 'none', display: 'flex', gap: 16, margin: 0, padding: 0, flexWrap: 'wrap' }}>
+                  <li><a href="/about" style={{ color: '#e2e8f0', textDecoration: 'none' }}>このサイトについて</a></li>
+                  <li><a href="/contact" style={{ color: '#e2e8f0', textDecoration: 'none' }}>お問い合わせ</a></li>
+                  <li><a href="/privacy" style={{ color: '#e2e8f0', textDecoration: 'none' }}>プライバシーポリシー</a></li>
+                </ul>
+              </nav>
             </div>
-          </div>
-
-          {/* フッター下段: ページリンクとコピーライト */}
-          <div className="container footer-bottom">
-            <div className="footer-links footer-bottom-links">
-              <a href="/privacy">プライバシーポリシー</a>
+            {/* コピーライト（下段を廃止し、ここに統合） */}
+            <div className="container" style={{ paddingTop: 12, textAlign: 'center', color: '#cbd5e1' }}>
+              © {new Date().getFullYear()} 旅ログ
             </div>
-            © {new Date().getFullYear()} 旅ログ
           </div>
         </footer>
       </body>

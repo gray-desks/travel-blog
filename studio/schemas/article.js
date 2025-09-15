@@ -1,6 +1,18 @@
 import {defineType, defineField} from 'sanity'
 
-// 依存なしの簡易 slugify（英数字とハイフンのみ）。日本語だけの時は安全なフォールバック。
+/*
+  Article ドキュメントスキーマ
+  - 旅ブログの記事（title/slug/本文/画像 等）を管理します。
+  - ここで定義したフィールドは Studio の入力フォームと API（GROQ）に反映されます。
+  - フロント側では `lib/queries.js` の GROQ からこれらの項目を参照します。
+*/
+
+/*
+  簡易 slugify 関数（外部依存なし）
+  - Unicode 正規化 → 小文字化 → 記号除去 → 空白をハイフンに → 連続ハイフン圧縮 → 端のハイフン除去
+  - 日本語のみなどで英数字が含まれない場合は、安全なフォールバック値を自動生成
+    例: post-YYYYMMDD-xxxx
+*/
 const slugify = (input) => {
   const base = String(input || '')
     .normalize('NFKD')
@@ -16,7 +28,7 @@ const slugify = (input) => {
   return `post-${ts}-${Math.random().toString(36).slice(2,6)}`
 }
 
-// 都道府県（日本語表示・そのまま保存）
+// 都道府県の選択肢（日本語表示・そのまま保存）
 const PREFS = [
   '北海道','青森県','岩手県','宮城県','秋田県','山形県','福島県',
   '茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県',
@@ -29,15 +41,16 @@ const PREFS = [
 ]
 
 export default defineType({
+  // スキーマ内部名（API 名）/ Studio 表示名 / ドキュメント種別
   name: 'article',
   title: 'Article',
   type: 'document',
 
-  // ドキュメント初期値（langのみ既定）
+  // ドキュメント初期値（初期言語のみ ja に固定）
   initialValue: { lang: 'ja' },
 
   fields: [
-    // 必須：title だけ
+    // タイトル（必須）: 一覧/詳細で表示される主要テキスト
     defineField({
       name: 'title',
       title: 'タイトル',
@@ -45,24 +58,26 @@ export default defineType({
       validation: r => r.required()
     }),
 
-    // 任意：slug（英数字にスラグ化。日本語タイトル時は安全フォールバック）
+    // スラッグ（任意）: URL 用。英数字ハイフンに自動変換（日本語のみでもフォールバック生成）
     defineField({
       name: 'slug',
       title: 'スラッグ',
       type: 'slug',
       options: {
+        // 生成元はタイトル
         source: doc => doc.title,
         maxLength: 96,
         slugify
       },
+      // 一意性チェックは Sanity 既定ロジックに委譲
       // 入力は任意（自動生成ボタンでも、空のままでもOK）
       isUnique: (value, ctx) => ctx.defaultIsUnique(value, ctx)
     }),
 
-    // 任意：公開日時（並び替えに使用予定）
+    // 公開日時（任意）: 一覧の並び替え等で使用想定
     defineField({ name: 'publishedAt', title: '公開日時', type: 'datetime' }),
 
-    // 任意：概要（抜粋）
+    // 概要（任意）: 抜粋やメタディスクリプション用の短文
     defineField({
       name: 'excerpt',
       title: '概要（抜粋）',
@@ -70,10 +85,10 @@ export default defineType({
       rows: 3
     }),
 
-    // 任意：言語（既定 ja）
+    // 言語（任意）: 既定は ja（initialValue で設定）
     defineField({ name: 'lang', title: 'Language', type: 'string' }),
 
-    // 任意：タイプ
+    // 種別（任意）: 記事のタイプ分類（一覧フィルタで利用）
     defineField({
       name: 'type',
       title: '種別',
@@ -89,7 +104,7 @@ export default defineType({
       }
     }),
 
-    // 任意：都道府県
+    // 都道府県（任意）: 日本国内のロケーション分類（一覧フィルタで利用）
     defineField({
       name: 'prefecture',
       title: '都道府県',
@@ -97,10 +112,10 @@ export default defineType({
       options: { list: PREFS.map(p => ({title: p, value: p})) }
     }),
 
-    // 任意：場所名
+    // 場所名（任意）: 施設名やスポット名など自由入力
     defineField({ name: 'placeName', title: '場所名', type: 'string' }),
 
-    // 画像（mainImage 1本化）
+    // メイン画像: 記事のキービジュアル。hotspot 有効、代替テキストを任意入力
     defineField({
       name: 'mainImage',
       title: 'メイン画像',
@@ -109,7 +124,7 @@ export default defineType({
       fields: [{ name: 'alt', type: 'string', title: '代替テキスト' }]
     }),
 
-    // 任意：ギャラリー
+    // ギャラリー（任意）: 追補の画像群。各画像に代替テキストを付与可能
     defineField({
       name: 'gallery',
       title: 'ギャラリー',
@@ -121,13 +136,14 @@ export default defineType({
       }]
     }),
 
-    // 本文（Portable Text）
+    // 本文（Portable Text）: `blockContent` スキーマに基づくリッチテキスト/画像の配列
+    // - 見出し、段落、リンク、画像などを Studio で柔軟に編集可能
     defineField({ name: 'body', title: '本文', type: 'blockContent' }),
 
-    // 任意：タグ
+    // タグ（任意）: 単純な文字列タグの配列
     defineField({ name: 'tags', title: 'タグ', type: 'array', of: [{type:'string'}] }),
 
-    // 任意：翻訳元参照
+    // 翻訳元参照（任意）: 多言語展開時に、元記事（同スキーマ）を参照
     defineField({
       name: 'translationOf',
       title: '翻訳元',
@@ -137,6 +153,7 @@ export default defineType({
   ],
 
   preview: {
+    // Studio のリスト表示などで用いるプレビュー項目
     select: { title: 'title', media: 'mainImage', subtitle: 'lang' }
   }
 })

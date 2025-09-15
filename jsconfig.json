@@ -1,0 +1,16 @@
+// jsconfig.json: エディタと言語サービス/Next.js によるモジュール解決の設定
+// - 絶対インポートやパスエイリアス（@lib, @components）を有効化します
+{
+  // TypeScript/JS 言語サービス向けのコンパイラオプション
+  "compilerOptions": {
+    // 非相対インポートの基準ディレクトリ（プロジェクトルートを指定）
+    "baseUrl": ".",
+    // パスエイリアスの定義
+    // 例: import { client } from '@lib/sanityClient' → lib/sanityClient.js
+    //     import ArticleCard from '@components/ArticleCard' → app/components/ArticleCard.js
+    "paths": {
+      "@lib/*": ["lib/*"],
+      "@components/*": ["app/components/*"]
+    }
+  }
+}

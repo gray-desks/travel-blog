@@ -1,10 +1,11 @@
 // 記事詳細ページ（/articles/[slug]）を描画するサーバーコンポーネント
 // - 動的ルートの [slug] に対応
 // - Sanity から記事データを取得して表示
+// route-group: (public)
 import { notFound } from 'next/navigation'
-import { client } from '../../../lib/sanityClient'
-import { articleBySlugQuery } from '../../../lib/queries'
-import { renderPortableTextLite } from '../../../lib/portableTextLite'
+import { client } from '@lib/sanityClient'
+import { articleBySlugQuery } from '@lib/queries'
+import { renderPortableTextLite } from '@lib/portableTextLite'
 
 // ISR 設定: 60秒ごとに再検証して静的ページを自動更新
 export const revalidate = 60

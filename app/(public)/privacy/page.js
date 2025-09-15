@@ -1,6 +1,7 @@
 // プライバシーポリシーの静的ページ（/privacy）
 // - Server Component（デフォルト）
 // - ISR: 60秒ごとに再検証して最新内容に更新可能
+// route-group: (public)
 export const revalidate = 60
 
 export const metadata = {
@@ -11,6 +12,8 @@ export const metadata = {
 export default function PrivacyPage() {
   // 本文内の日付表記用に、本日の YYYY-MM-DD を生成
   const today = new Date().toISOString().slice(0, 10)
+  const owner = '山﨑秀国'
+  const email = 'contact.business2525@gmail.com'
   return (
     // 主要コンテナ: 幅を狭めて読みやすく、上下に余白
     <main className="container narrow" style={{ padding: '32px 0' }}>
@@ -30,8 +33,8 @@ export default function PrivacyPage() {
         {/* 運営者情報 */}
         <h2>運営者情報</h2>
         <p>
-          運営者名: <strong>（ご指定ください）</strong><br />
-          連絡先: <strong>（ご指定のメールアドレス）</strong>
+          運営者名: <strong>{owner}</strong><br />
+          連絡先: <a href={`mailto:${email}`}>{email}</a>
         </p>
 
         {/* 収集する情報の例示 */}
@@ -99,7 +102,7 @@ export default function PrivacyPage() {
         {/* お問い合わせ先 */}
         <h2>お問い合わせ</h2>
         <p>
-          本ポリシーに関するお問い合わせは、上記「運営者情報」に記載の連絡先までご連絡ください。
+          本ポリシーに関するお問い合わせは、<a href="/contact">お問い合わせページ</a> または <a href={`mailto:${email}`}>{email}</a> までご連絡ください。
         </p>
       </section>
     </main>

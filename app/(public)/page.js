@@ -1,10 +1,11 @@
 // トップページ（/）: 記事一覧 + 検索/絞り込み/ページングを提供するサーバーコンポーネント
+// route-group: (public)
 import Link from 'next/link'
-import { client } from '../lib/sanityClient'
-import { buildArticlesQuery } from '../lib/queries'
-import Hero from './components/Hero'
-import ArticleCard from './components/ArticleCard'
-import ResetButton from './components/ResetButton'
+import { client } from '@lib/sanityClient'
+import { buildArticlesQuery } from '@lib/queries'
+import Hero from '@components/Hero'
+import ArticleCard from '@components/ArticleCard'
+import ResetButton from '@components/ResetButton'
 
 // ISR 設定: 60秒ごとに再検証して静的一覧を更新
 export const revalidate = 60
