@@ -41,11 +41,12 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
               {/* フッターナビ（重要ページ） */}
-              <nav aria-label="フッターナビ">
-                <ul style={{ listStyle: 'none', display: 'flex', gap: 16, margin: 0, padding: 0, flexWrap: 'wrap' }}>
-                  <li><a href="/about" style={{ color: '#e2e8f0', textDecoration: 'none' }}>このサイトについて</a></li>
-                  <li><a href="/contact" style={{ color: '#e2e8f0', textDecoration: 'none' }}>お問い合わせ</a></li>
-                  <li><a href="/privacy" style={{ color: '#e2e8f0', textDecoration: 'none' }}>プライバシーポリシー</a></li>
+              <nav aria-label="フッターナビ" className="footer-nav">
+                <ul>
+                  <li><a href="/">記事一覧</a></li>
+                  <li><a href="/about">このサイトについて</a></li>
+                  <li><a href="/contact">お問い合わせ</a></li>
+                  <li><a href="/privacy">プライバシーポリシー</a></li>
                 </ul>
               </nav>
             </div>

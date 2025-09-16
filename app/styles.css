@@ -119,6 +119,11 @@ body.no-scroll{ overflow:hidden; }
 .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .footer-brand{ display:flex; align-items:center; gap:12px; color:#e2e8f0; }
 .footer-tagline{ color:#94a3b8; font-size:13px; }
+/* フッターナビ（ホバー/フォーカス対応） */
+.footer-nav ul{ list-style:none; display:flex; gap:16px; margin:0; padding:0; flex-wrap:wrap; }
+.footer-nav a{ color:#e2e8f0; text-decoration:none; padding:6px 8px; border-radius:8px; transition: color .15s ease, background .15s ease, box-shadow .15s ease; }
+.footer-nav a:hover{ color:#fff; background: rgba(255,255,255,0.06); }
+.footer-nav a:focus-visible{ outline:2px solid transparent; box-shadow: 0 0 0 3px rgba(99,102,241,0.35); }
 /* （未使用のフッター下段スタイルは削除） */
 
 /*
