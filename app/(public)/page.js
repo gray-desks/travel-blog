@@ -42,7 +42,8 @@ export default async function Page({ searchParams }) {
   const hasFilter = Boolean(q || type || prefecture)
 
   return (
-    <main className="content-wide">
+    <div className="page-layout">
+      <main className="articles-layout">
       {/* ヒーローセクション内に検索フォームを配置 */}
       <Hero>
         {/* GET クエリで絞り込み条件を付与するフォーム */}
@@ -160,8 +161,8 @@ export default async function Page({ searchParams }) {
       {/* 該当なしUI（フィルタ中はリセット導線を表示） */}
       {visible.length === 0 && (
         <div className="center" style={{ padding: '48px 0' }}>
-          <div className="card" style={{ maxWidth: 560, margin: '0 auto' }}>
-            <div className="card-body" style={{ textAlign:'center' }}>
+          <div className="page-content" style={{ maxWidth: 560, margin: '0 auto' }}>
+            <div style={{ textAlign:'center' }}>
               <div style={{ fontWeight:800, marginBottom:6 }}>表示できる記事がありません</div>
               <div className="muted" style={{ marginBottom:12 }}>
                 {hasFilter ? '条件に一致する記事がありません。条件を変更するか、リセットしてください。' : 'まだ記事がありません。'}
@@ -173,6 +174,7 @@ export default async function Page({ searchParams }) {
           </div>
         </div>
       )}
-    </main>
+      </main>
+    </div>
   )
 }

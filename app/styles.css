@@ -30,13 +30,125 @@ html,body{ background:var(--bg); color:#111; }
 /* 共通ユーティリティ（ヘッダー/フッター等で使用） */
 .container{ width:100%; max-width: var(--content-max); margin:0 auto; padding: 0 var(--space-4); }
 
-/* ページ本文用の独立したコンテンツコンテナ（幅は持たず、余白のみ管理） */
+/*/* ページ本文用の独立したコンテンツコンテナ（幅は持たず、余白のみ管理） */
 .content-container{ width:100%; padding: 0 var(--space-4); }
 
 /* 一覧などワイド表示用のユーティリティ（最大幅は画面に追従しつつ上限を持つ） */
 .content-wide{ width:100%; max-width: var(--content-max); margin: 0 auto; }
 
-/* 旧ブレークポイントは上書き済み（より広い幅に） */
+/* プロフェッショナルな統一ページレイアウトシステム */
+.page-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* ページヘッダー統一スタイル */
+.page-header {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.page-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.page-header .page-subtitle {
+  color: #64748b;
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ページコンテンツ統一スタイル */
+.page-content {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+/* 記事リスト専用レイアウト */
+.articles-layout {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* 静的ページ専用レイアウト */
+.static-page {
+  width: 100%;
+  max-width: var(--narrow-max);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media(max-width: 768px) {
+  .page-header {
+    padding: 20px;
+    margin: 16px 0;
+    border-radius: 12px;
+  }
+  
+  .page-header h1 {
+    font-size: 24px;
+  }
+  
+  .page-header .page-subtitle {
+    font-size: 14px;
+  }
+  
+  .page-content {
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .page-main, .articles-layout, .static-page {
+    padding: 0 16px;
+  }
+}
+
+/* プロフェッショナルなフォーカス管理 */
+.page-header h1:focus-visible,
+.page-content:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* セマンティックカラーシステム */
+:root {
+  --semantic-success: #10b981;
+  --semantic-warning: #f59e0b;
+  --semantic-error: #ef4444;
+  --semantic-info: #3b82f6;
+}
+
+/* プロフェッショナルなスペーシングシステム */
+.mb-small { margin-bottom: var(--space-2); }
+.mb-medium { margin-bottom: var(--space-4); }
+.mb-large { margin-bottom: var(--space-6); }
+.mt-small { margin-top: var(--space-2); }
+.mt-medium { margin-top: var(--space-4); }
+.mt-large { margin-top: var(--space-6); }
 
 /* メインコンテナのスタイル（レイアウト用） */
 .main-container{

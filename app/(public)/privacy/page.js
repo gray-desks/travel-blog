@@ -15,15 +15,15 @@ export default function PrivacyPage() {
   const owner = '山﨑秀国'
   const email = 'contact.business2525@gmail.com'
   return (
-    // 主要コンテナ: 幅を狭めて読みやすく、上下に余白
-    <main className="container narrow" style={{ padding: '32px 0' }}>
-      {/* ページ見出し */}
-      <h1 className="article-title" style={{ marginBottom: 8 }}>プライバシーポリシー</h1>
-      {/* 施行日（現在日付を表示） */}
-      <p className="muted" style={{ marginBottom: 24 }}>施行日: <time dateTime={today}>{today}</time></p>
+    <div className="page-layout">
+      <main className="static-page">
+        <div className="page-header">
+          <h1>プライバシーポリシー</h1>
+          <p className="page-subtitle">施行日: <time dateTime={today}>{today}</time></p>
+        </div>
 
-      {/* 本文セクション（基本のタイポグラフィは .prose クラスで調整） */}
-      <section className="prose" style={{ fontSize: 16 }}>
+        <div className="page-content">
+          <div className="prose" style={{ fontSize: 16 }}>
         {/* 導入文 */}
         <p>
           本サイト「旅ログ」（以下「当サイト」）は、ユーザーの皆さまの個人情報を適切に取り扱い、
@@ -102,9 +102,11 @@ export default function PrivacyPage() {
         {/* お問い合わせ先 */}
         <h2>お問い合わせ</h2>
         <p>
-          本ポリシーに関するお問い合わせは、<a href="/contact">お問い合わせページ</a> または <a href={`mailto:${email}`}>{email}</a> までご連絡ください。
-        </p>
-      </section>
-    </main>
+            本ポリシーに関するお問い合わせは、<a href="/contact">お問い合わせページ</a> または <a href={`mailto:${email}`}>{email}</a> までご連絡ください。
+          </p>
+          </div>
+        </div>
+      </main>
+    </div>
   )
 }

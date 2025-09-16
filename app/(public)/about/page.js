@@ -9,13 +9,15 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <article className="narrow">
-      {/* ページタイトルとサブタイトル（導入） */}
-      <h1 className="article-title">このサイトについて</h1>
-      <p className="article-sub">本サイトの運営目的やポリシーをご案内します。</p>
+    <div className="page-layout">
+      <main className="static-page">
+        <div className="page-header">
+          <h1>このサイトについて</h1>
+          <p className="page-subtitle">本サイトの運営目的やポリシーをご案内します。</p>
+        </div>
 
-      {/* 本文タイポグラフィは .prose を適用し、可読サイズに調整 */}
-      <div className="prose" style={{ fontSize: 16 }}>
+        <div className="page-content">
+          <div className="prose" style={{ fontSize: 16 }}>
         {/* サイトの目的 */}
         <h2>サイトの目的</h2>
         <p>
@@ -70,8 +72,10 @@ export default function AboutPage() {
         </p>
 
         {/* 変更の可能性に関する注記 */}
-        <p className="muted">本ページの内容は予告なく変更される場合があります。</p>
-      </div>
-    </article>
+            <p className="muted">本ページの内容は予告なく変更される場合があります。</p>
+          </div>
+        </div>
+      </main>
+    </div>
   )
 }
