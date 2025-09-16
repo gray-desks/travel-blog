@@ -11,8 +11,8 @@ import ResetButton from '@components/ResetButton'
 export const revalidate = 60
 
 export default async function Page({ searchParams }) {
-  // URL クエリから検索条件を取得
-  const params = searchParams
+  // URL クエリから検索条件を取得（Next 15: searchParams は await が必要）
+  const params = await searchParams
   const q = params?.q || ''
   const type = params?.type || ''
   const prefecture = params?.prefecture || ''
@@ -25,7 +25,13 @@ export default async function Page({ searchParams }) {
 
   // 検索条件から GROQ を生成し、Sanity から記事を取得
   const { groq, params: queryParams } = buildArticlesQuery({ q, type, prefecture, from, to })
-  const result = await client.fetch(groq, queryParams)
+  let result
+  try {
+    result = await client.fetch(groq, queryParams)
+  } catch (err) {
+    console.error('[Sanity] list fetch failed', { message: err?.message })
+    result = []
+  }
 
   // 空要素や slug 未設定を除外してから、表示分にスライス
   const filtered = Array.isArray(result) ? result.filter(a => a && a.slug) : []
@@ -96,18 +102,59 @@ export default async function Page({ searchParams }) {
       </section>
       {/* ページャー（前/次）。1ページ目で前は非表示、次ページが無ければ次は非表示 */}
       {(hasNext || page > 1) && (
-        <nav className="pager" style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginTop: 16 }}>
-          {page > 1 ? (
-            <Link rel="prev" href={`/?${new URLSearchParams({ ...(q && {q}), ...(type && {type}), ...(prefecture && {prefecture}), page: String(page - 1) })}`}>
-              ← 前のページ
-            </Link>
-          ) : <span />}
-          <span className="muted" aria-live="polite">ページ {page}</span>
-          {hasNext ? (
-            <Link rel="next" href={`/?${new URLSearchParams({ ...(q && {q}), ...(type && {type}), ...(prefecture && {prefecture}), page: String(page + 1) })}`}>
-              次のページ →
-            </Link>
-          ) : <span />}
+        <nav className="pager" aria-label="ページャー" style={{ marginTop: 16 }}>
+          <div className="pager-inner">
+            {page > 1 ? (
+              <Link
+                className="pager-btn"
+                rel="prev"
+                href={`/?${new URLSearchParams({ ...(q && { q }), ...(type && { type }), ...(prefecture && { prefecture }), page: String(page - 1) })}`}
+              >
+                ← 前のページ
+              </Link>
+            ) : (
+              <span className="pager-btn is-disabled" aria-disabled="true">← 前のページ</span>
+            )}
+
+            <ul className="pagination" role="list">
+              {page > 1 && (
+                <li>
+                  <Link
+                    href={`/?${new URLSearchParams({ ...(q && { q }), ...(type && { type }), ...(prefecture && { prefecture }), page: String(page - 1) })}`}
+                    className="page-link"
+                  >
+                    {page - 1}
+                  </Link>
+                </li>
+              )}
+              <li>
+                <span className="page-link is-current" aria-current="page">{page}</span>
+              </li>
+              {hasNext && (
+                <li>
+                  <Link
+                    rel="next"
+                    href={`/?${new URLSearchParams({ ...(q && { q }), ...(type && { type }), ...(prefecture && { prefecture }), page: String(page + 1) })}`}
+                    className="page-link"
+                  >
+                    {page + 1}
+                  </Link>
+                </li>
+              )}
+            </ul>
+
+            {hasNext ? (
+              <Link
+                className="pager-btn"
+                rel="next"
+                href={`/?${new URLSearchParams({ ...(q && { q }), ...(type && { type }), ...(prefecture && { prefecture }), page: String(page + 1) })}`}
+              >
+                次のページ →
+              </Link>
+            ) : (
+              <span className="pager-btn is-disabled" aria-disabled="true">次のページ →</span>
+            )}
+          </div>
         </nav>
       )}
       {/* 該当なしUI（フィルタ中はリセット導線を表示） */}

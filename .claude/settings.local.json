@@ -14,7 +14,9 @@
       "Read(//Users/yamazaki/旅ログ記事生成/studio/**)",
       "Bash(xargs kill:*)",
       "mcp__serena__create_text_file",
-      "mcp__serena__replace_regex"
+      "mcp__serena__replace_regex",
+      "Read(//var/folders/mf/857mvkr90pngs73rrb_860z00000gn/T/TemporaryItems/NSIRD_screencaptureui_an2Km6/**)",
+      "Read(//Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/app/**)"
     ],
     "deny": [],
     "ask": []

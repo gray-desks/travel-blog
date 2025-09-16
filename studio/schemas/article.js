@@ -10,7 +10,8 @@ import {defineType, defineField} from 'sanity'
 /*
   簡易 slugify 関数（外部依存なし）
   - Unicode 正規化 → 小文字化 → 記号除去 → 空白をハイフンに → 連続ハイフン圧縮 → 端のハイフン除去
-  - 日本語のみなどで英数字が含まれない場合は、安全なフォールバック値を自動生成
+  - 日本語など非 ASCII タイトルもそのまま保持（URL では自動エンコードされます）
+  - タイトルが空や記号のみで slug が空になった場合のみ、フォールバック値を生成
     例: post-YYYYMMDD-xxxx
 */
 const slugify = (input) => {
@@ -23,7 +24,8 @@ const slugify = (input) => {
     .replace(/-+/g, '-')
     .replace(/^-+|-+$/g, '')
 
-  if (/[a-z0-9]/.test(base)) return base
+  // 日本語など非 ASCII も含め、生成結果があればそのまま使用
+  if (base) return base
   const ts = new Date().toISOString().slice(0,10).replace(/-/g,'')
   return `post-${ts}-${Math.random().toString(36).slice(2,6)}`
 }
@@ -46,8 +48,13 @@ export default defineType({
   title: 'Article',
   type: 'document',
 
-  // ドキュメント初期値（初期言語のみ ja に固定）
-  initialValue: { lang: 'ja' },
+  // ドキュメント初期値
+  // - 言語: ja 固定
+  // - 公開日時: 新規作成時に現在時刻を自動入力（ISO文字列）
+  initialValue: () => ({
+    lang: 'ja',
+    publishedAt: new Date().toISOString()
+  }),
 
   fields: [
     // タイトル（必須）: 一覧/詳細で表示される主要テキスト
@@ -80,10 +87,10 @@ export default defineType({
     // 言語（任意）: 既定は ja（initialValue で設定）
     defineField({ name: 'lang', title: 'Language', type: 'string' }),
 
-    // 種別（任意）: 記事のタイプ分類（一覧フィルタで利用）
+    // 分類（任意）: 記事のタイプ分類（一覧フィルタで利用）
     defineField({
       name: 'type',
-      title: '種別',
+      title: '分類',
       type: 'string',
       options: {
         list: [

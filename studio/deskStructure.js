@@ -1,5 +1,5 @@
 // Sanity Studio のデスク構成（左サイドバーのカスタム構造）
-// - 記事(article)を「種別(type)」ごとにリスト表示できるようにします
+// - 記事(article)を「分類(type)」ごとにリスト表示できるようにします
 // - 未分類（type 未設定）も別項目として表示します
 const TYPES = [
   { title: 'スポット', value: 'spot' },
@@ -9,7 +9,7 @@ const TYPES = [
   { title: 'コラム',   value: 'column' },
 ]
 
-// 種別ごとのリスト項目を生成するヘルパー
+// 分類ごとのリスト項目を生成するヘルパー
 // - S は Structure Builder
 // - title はサイドバー表示名, type は article.type の値
 const byType = (S, title, type) =>
@@ -53,7 +53,7 @@ export default function deskStructure(S) {
       //       ])
       //   ),
 
-      // 種別ごとの絞り込みリスト
+      // 分類ごとの絞り込みリスト
       ...TYPES.map(t => byType(S, t.title, t.value)),
 
       S.divider(),
@@ -61,12 +61,12 @@ export default function deskStructure(S) {
       // 未分類（type未設定のもの）
       S.listItem()
         .id('articles-uncategorized')
-        .title('未分類（種別なし）')
+        .title('未分類（分類なし）')
         .schemaType('article')
         .child(
           S.documentList()
             .id('articles-uncategorized-list')
-            .title('未分類（種別なし）')
+            .title('未分類（分類なし）')
             .schemaType('article')
             // type フィールドが未定義の article を抽出
             .filter('_type == "article" && !defined(type)')

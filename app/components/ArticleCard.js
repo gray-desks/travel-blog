@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-// 英語の種別値を日本語ラベルに変換
+// 英語の分類値を日本語ラベルに変換
 const TYPE_LABELS = {
   spot: '観光スポット',
   food: 'グルメ',
@@ -46,7 +46,7 @@ export default function ArticleCard({ article }) {
             <div className="card-img" aria-hidden="true" />
           )}
         </Link>
-        {/* 記事タイプのラベル（CSSクラスは英語値を使用し、表示は日本語に変換） */}
+        {/* 記事分類のラベル（CSSクラスは英語値を使用し、表示は日本語に変換） */}
         {article.type && (
           <span className={`card-label card-label--${article.type}`}>
             {TYPE_LABELS[article.type] || article.type}
@@ -63,11 +63,11 @@ export default function ArticleCard({ article }) {
         </h2>
         {/* メタ情報（都道府県・公開日）。存在する項目のみ出力 */}
         <div className="meta">
-          {article.prefecture && <span>{article.prefecture}</span>}
+          {article.prefecture && <span aria-label="都道府県">📍 {article.prefecture}</span>}
           {article.publishedAt && (
             // 時間情報は <time> 要素でマークアップし、ja-JP ロケールで日付表示
-            <time dateTime={article.publishedAt} className="muted">
-              {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
+            <time dateTime={article.publishedAt} className="muted" aria-label="公開日">
+              🗓 {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
             </time>
           )}
         </div>

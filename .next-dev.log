@@ -1,0 +1,23 @@
+
+> mvp-blog@0.1.0 dev
+> next dev -p 3000 -H 127.0.0.1
+
+   ▲ Next.js 15.5.3
+   - Local:        http://127.0.0.1:3000
+   - Network:      http://127.0.0.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 1073ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1962ms (936 modules)
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/4883ea60ccf5c439afedc88bc5bda53b8fd2a62b-1456x816.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dbb48be579e5a00229bff504be63dc1889018e18-1344x768.png" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/878046e53d35b0417d7c2714fc7d05d9868de46b-1456x816.png" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+ GET / 200 in 3145ms
+ ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
+ ✓ Compiled /icon.svg in 177ms (697 modules)
+ GET /icon.svg?c0693d97a33ac318 200 in 256ms

@@ -11,8 +11,9 @@ Next.js App Router と Sanity を用いた、読み取り専用の最小構成�
 ## ディレクトリ構成（現状）
 - `app/` — Next.js アプリ本体（ページ/レイアウト/スタイル/UI）
   - `app/components/` — 画面共通のプレゼンテーショナル/クライアントコンポーネント
-  - `app/articles/[slug]/page.js` — 記事詳細ページ
-  - `app/page.js` — 記事一覧・検索/フィルタ/ページング
+  - `app/(public)/articles/[slug]/page.js` — 記事詳細ページ
+  - `app/(public)/page.js` — 記事一覧・検索/フィルタ/ページング
+  - `app/(public)/loading.js` — ローディングスケルトン
   - そのほか静的ページ（`/about`, `/contact`, `/privacy` 等）
 - `lib/` — Sanity クライアント、GROQ クエリ、Portable Text の軽量レンダラ
 - `studio/` — Sanity Studio（独立した `package.json` とスクリプト）
@@ -25,6 +26,7 @@ Next.js App Router と Sanity を用いた、読み取り専用の最小構成�
 - `npm run dev` — Next.js 開発サーバー起動
 - `npm run build` — 本番ビルド
 - `npm start` — 生成物を起動
+  - サイトマップ: `/sitemap.xml` が自動生成されます
 
 Studio（`cd studio`）
 - `npm run dev` — Sanity Studio をローカル起動
@@ -34,9 +36,10 @@ Studio（`cd studio`）
 ## 設定と方針
 - データセット: `production`（公開読み取りのみ）
 - 認証: フロントエンドにシークレットは埋め込まない（読み取りのみ）
-- Sanity クライアント: `lib/sanityClient.js` にて `projectId: 'c3twwalw'` を固定
+- Sanity クライアント: `lib/sanityClient.js` は `NEXT_PUBLIC_SANITY_PROJECT_ID` を使用（未設定時は開発向けフォールバックあり）
 - パスエイリアス: `@lib/*`, `@components/*` を `jsconfig.json` で定義
-- Next 設定: `next.config.js` は未作成（現状デフォルトで運用）
+- Next 設定: `next.config.js` で `images.domains` に `cdn.sanity.io` を許可
+- 本番URL（任意）: `NEXT_PUBLIC_SITE_URL` を設定するとサイトマップの絶対URLを正しく生成できます（未設定時は `http://localhost:3000`）
 
 ## ページ構成（主要）
 - `/` — 一覧/検索（`app/page.js`）
@@ -68,13 +71,13 @@ Studio（`cd studio`）
 ## 開発メモ（現状に合わせた補足）
 - コード内に日本語の解説コメントを追加済み（主要ファイル）
   - `app/not-found.js`, `app/components/*`, `lib/*`, `studio/*` など
-- Studio の Desk 構成は `studio/deskStructure.js` で種別別のリストを提供
+- Studio の Desk 構成は `studio/deskStructure.js` で分類別のリストを提供
 - Portable Text レンダラは最小限の機能に限定（セキュリティ重視）
 
 既知のメモ
 - `@components` エイリアスが利用可能です。`app/contact/page.js` のフォームインポートは `@components/ContactForm` の利用を推奨
 
 ## 今後の改善候補
-- SEO ルートの追加（`app/robots.txt/route.js`, `app/sitemap.xml/route.js`）
+- SEO ルートの追加（`app/robots.js`）
 - E2E/ユニットテストの導入（Playwright/Jest）
 - README の英語版とスクリーンショットの追加

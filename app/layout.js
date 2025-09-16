@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <Header />
 
         {/* ページ固有コンテンツを描画する主要コンテナ（各ページで <main> を持つためここは div） */}
-        <div className="container" style={{ padding: '24px', flex: '1 0 auto' }}>
+        <div className="container main-container">
           {children}
         </div>
 
