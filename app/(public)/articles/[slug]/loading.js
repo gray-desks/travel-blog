@@ -10,8 +10,8 @@ export default function ArticleLoading() {
       <div className="skeleton" style={{ width: '70%', height: 30, borderRadius: 8 }} />
       {/* 日付などサブ情報のスケルトン */}
       <div className="skeleton" style={{ width: 120, height: 14, borderRadius: 6, marginTop: 8 }} />
-      {/* メイン画像のスケルトン（16:9） */}
-      <div className="skeleton" style={{ width: '100%', aspectRatio: '16 / 9', borderRadius: 12, margin: '16px 0' }} />
+      {/* メイン画像のスケルトン（ギャラリーと同じ見た目の高さ） */}
+      <div className="skeleton article-cover-box" aria-hidden />
       {/* 本文の段落・画像のダミー行を数本表示 */}
       <div className="prose" style={{ fontSize: 16 }}>
         <p className="skeleton-line" />
