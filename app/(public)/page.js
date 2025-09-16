@@ -42,7 +42,7 @@ export default async function Page({ searchParams }) {
   const hasFilter = Boolean(q || type || prefecture)
 
   return (
-    <main>
+    <main className="content-wide">
       {/* ヒーローセクション内に検索フォームを配置 */}
       <Hero>
         {/* GET クエリで絞り込み条件を付与するフォーム */}

@@ -21,6 +21,11 @@ export default function ArticleCard({ article }) {
   const href = `/articles/${encodeURIComponent(article.slug)}`
   // メイン画像の URL を取得。未設定時は空文字でフェールセーフ
   const img = article?.mainImage?.asset?.url || ''
+  const thumbs = Array.isArray(article?.galleryPreview)
+    ? article.galleryPreview.map(i => i?.asset?.url).filter(Boolean)
+    : []
+  const total = typeof article?.galleryCount === 'number' ? article.galleryCount : thumbs.length
+  const moreCount = Math.max(0, total - thumbs.length)
 
   return (
     <article className="card">
@@ -61,6 +66,21 @@ export default function ArticleCard({ article }) {
             {article.title}
           </Link>
         </h2>
+        {/* ギャラリーがある場合は先頭数枚をサムネイルで表示し、枚数が多ければ +n を表示 */}
+        {(total > 0) && (
+          <div className="card-gallery" aria-label="ギャラリー">
+            {thumbs.map((url, idx) => (
+              <Link key={idx} href={href} aria-label={`ギャラリー画像 ${idx + 1}`}> 
+                <Image src={url} alt="" width={36} height={36} className="thumb-img" />
+              </Link>
+            ))}
+            {moreCount > 0 && (
+              <Link href={href} className="thumb-more" aria-label={`他 ${moreCount} 枚`}>
+                +{moreCount}
+              </Link>
+            )}
+          </div>
+        )}
         {/* メタ情報（都道府県・公開日）。存在する項目のみ出力 */}
         <div className="meta">
           {article.prefecture && <span aria-label="都道府県">📍 {article.prefecture}</span>}

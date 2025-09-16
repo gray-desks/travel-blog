@@ -2,7 +2,7 @@
 export default function Loading() {
   const cards = Array.from({ length: 12 })
   return (
-    <main>
+    <main className="content-wide">
       {/* Hero スケルトン */}
       <section className="hero" aria-hidden>
         <div className="skeleton title" style={{ width: 280, height: 28, borderRadius: 8 }} />
@@ -22,7 +22,7 @@ export default function Loading() {
         {cards.map((_, i) => (
           <article key={i} className="card">
             <div className="card-media">
-              <div className="skeleton" style={{ width: '100%', height: 190 }} />
+              <div className="skeleton" style={{ width: '100%', aspectRatio: '16 / 9', borderRadius: 12 }} />
             </div>
             <div className="card-body">
               <div className="skeleton" style={{ width: '80%', height: 18, borderRadius: 6 }} />
@@ -34,4 +34,3 @@ export default function Loading() {
     </main>
   )
 }
-

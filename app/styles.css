@@ -21,12 +21,22 @@
   - 共通コンテナの最大幅と左右余白
 */
 html,body{ background:var(--bg); color:#111; }
-.container{ max-width:1200px; margin:0 auto; padding: 0 var(--space-4); }
+/* レイアウト用の共通パラメータ */
+:root{
+  --content-max: 1440px; /* 一覧など広めの最大幅 */
+  --narrow-max: 920px;   /* 長文の理想的な最大幅（可読性重視） */
+}
 
-/* レスポンシブ対応：画面サイズに応じて段階的に横幅を拡張 */
-@media(min-width: 1024px) { .container{ max-width: 1024px; } }
-@media(min-width: 1280px) { .container{ max-width: 1120px; } }
-@media(min-width: 1536px) { .container{ max-width: 1280px; } }
+/* 共通ユーティリティ（ヘッダー/フッター等で使用） */
+.container{ width:100%; max-width: var(--content-max); margin:0 auto; padding: 0 var(--space-4); }
+
+/* ページ本文用の独立したコンテンツコンテナ（幅は持たず、余白のみ管理） */
+.content-container{ width:100%; padding: 0 var(--space-4); }
+
+/* 一覧などワイド表示用のユーティリティ（最大幅は画面に追従しつつ上限を持つ） */
+.content-wide{ width:100%; max-width: var(--content-max); margin: 0 auto; }
+
+/* 旧ブレークポイントは上書き済み（より広い幅に） */
 
 /* メインコンテナのスタイル（レイアウト用） */
 .main-container{
@@ -138,7 +148,7 @@ body.no-scroll{ overflow:hidden; }
 .card{ background:#fff; border-radius:16px; box-shadow: var(--shadow); overflow:hidden; display:flex; flex-direction:column; transition: transform .12s ease, box-shadow .12s ease; }
 .card:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
 .card-media{ position:relative; }
-.card-img{ width:100%; height:190px; object-fit:cover; display:block; background:#eee; }
+.card-img{ width:100%; aspect-ratio: 16 / 9; display:block; background:#eee; position: relative; }
 .card-label{ position:absolute; left:10px; top:10px; background:#ecebff; color:#222; font-size:12px; padding:4px 8px; border-radius:9999px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .card-label--spot{ background:#e8f5ff; color:#084c7c; }
 .card-label--food{ background:#fff3e6; color:#7a3c00; }
@@ -147,6 +157,9 @@ body.no-scroll{ overflow:hidden; }
 .card-label--column{ background:#f1f5f9; color:#334155; }
 .card-body{ padding: var(--space-4); }
 .card-title{ font-size:18px; font-weight:700; margin:0; line-clamp: 2; overflow: hidden; }
+.card-gallery{ display:flex; align-items:center; gap:6px; margin-top:8px; }
+.card-gallery .thumb-img{ width:36px; height:36px; object-fit:cover; border-radius:8px; border:1px solid #e5e7eb; box-shadow: 0 1px 6px rgba(0,0,0,0.08); background:#eee; }
+.card-gallery .thumb-more{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:8px; border:1px solid #e5e7eb; background:#f1f5f9; color:#334155; font-size:12px; text-decoration:none; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
 .meta{ color:#666; font-size:12px; display:flex; gap:8px; align-items:center; margin-top:4px; flex-wrap:wrap; }
 .meta > * + * { position:relative; padding-left:10px; }
 .meta > * + *::before { content:''; position:absolute; left:0; top:50%; width:4px; height:4px; background:#d1d5db; border-radius:9999px; transform: translateY(-50%); }
@@ -180,7 +193,7 @@ body.no-scroll{ overflow:hidden; }
 */
 .article-title{ font-size: 30px; font-weight: 800; margin: 0 0 var(--space-2); letter-spacing: 0.01em; }
 .article-sub{ color:#666; font-size:14px; margin-bottom: var(--space-4); }
-.article-cover{ width:100%; border-radius: var(--radius); box-shadow: var(--shadow); margin: var(--space-4) 0; }
+.article-cover{ width:100%; aspect-ratio: 16 / 9; object-fit: cover; display:block; border-radius: var(--radius); box-shadow: var(--shadow); margin: var(--space-4) 0; }
 .prose h2{ font-size:22px; font-weight:700; margin: 24px 0 12px; }
 .prose h3{ font-size:18px; font-weight:600; margin: 20px 0 10px; }
 .prose p{ margin: 12px 0; line-height:1.8; }
@@ -190,10 +203,8 @@ body.no-scroll{ overflow:hidden; }
 /* アクセシビリティ（視覚的に非表示） */
 .sr-only{ position:absolute; inline-size:1px; block-size:1px; padding:0; margin:-1px; overflow:hidden; clip-path: inset(50%); white-space:nowrap; border:0; }
 
-/* レイアウト補助（本文幅を狭めて読みやすく） */
-.narrow{ max-width: 840px; margin: 0 auto; }
-@media(min-width:1280px){ .narrow{ max-width: 960px; } }
-@media(min-width:1536px){ .narrow{ max-width: 1040px; } }
+/* レイアウト補助（長文可読幅）。行長60-80字相当を目安に調整 */
+.narrow{ width:100%; max-width: var(--narrow-max); margin: 0 auto; }
 
 /* ページャー（前/次リンクの見た目） */
 .pager a{ display:inline-block; padding:8px 12px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; box-shadow: var(--shadow); }
@@ -240,3 +251,46 @@ body.no-scroll{ overflow:hidden; }
   margin: 10px 0;
 }
 .skeleton-line.short { width: 60%; }
+
+/* 記事詳細カード（白背景 + 角丸 + 影） */
+.article-card{ background:#fff; border:1px solid #eee; border-radius:16px; box-shadow: var(--shadow); padding: 16px; }
+@media(min-width:768px){ .article-card{ padding: 20px; } }
+
+/* カバー画像（アスペクトに合わせてトリミング） */
+.article-cover-wrap{ position:relative; width:100%; height: 340px; border-radius: 12px; overflow:hidden; box-shadow: var(--shadow); }
+@media(max-width:640px){ .article-cover-wrap{ height: 220px; } }
+.article-cover-img{ object-fit: cover; }
+
+/* メタチップ */
+.chips{ display:flex; gap:8px; flex-wrap:wrap; margin: 8px 0 12px; }
+.chip{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:#f8fafc; color:#0f172a; border:1px solid #e5e7eb; font-size:12px; }
+.chip--muted{ color:#475569; background:#f1f5f9; }
+.chip--type{ background:#fff7f7; border-color:#fecaca; }
+
+/* 詳細ギャラリー */
+.gallery{ background:#fff; }
+.gallery-view{ position:relative; width:100%; border:1px solid #eee; border-radius:12px; overflow:hidden; box-shadow: var(--shadow); }
+.gallery-main{ position:relative; width:100%; height: 520px; }
+@media(max-width: 640px){ .gallery-main{ height: 360px; } }
+.gallery-img{ object-fit: contain; background:#0b1020; }
+.gallery-nav{ position:absolute; inset:0; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+.gallery-btn{ pointer-events:auto; margin:0 8px; width:36px; height:36px; border-radius:999px; border:1px solid rgba(255,255,255,0.35); background: rgba(15,23,42,0.35); color:#fff; display:grid; place-items:center; backdrop-filter: blur(6px); }
+.gallery-btn:hover{ background: rgba(15,23,42,0.5); }
+.gallery-counter{ position:absolute; right:10px; bottom:10px; background: rgba(0,0,0,0.6); color:#fff; padding:4px 8px; border-radius:999px; font-size:12px; }
+.gallery-thumbs{ display:flex; gap:8px; padding-top: 10px; overflow-x:auto; }
+.gallery-thumb{ border:2px solid transparent; border-radius:8px; overflow:hidden; width:72px; height:72px; flex: 0 0 auto; background:#f3f4f6; }
+.gallery-thumb.is-current{ border-color:#111; }
+
+/* ライトボックス */
+.lightbox{ position: fixed; inset: 0; z-index: 50; }
+.lightbox-backdrop{ position: absolute; inset: 0; background: rgba(17,24,39,0.82); border:0; margin:0; padding:0; width:100%; height:100%; }
+.lightbox-inner{ position: absolute; inset: 0; display: grid; grid-template-rows: 1fr auto; align-items: stretch; }
+/* 画面端に適度な余白（ベストプラクティス: 8px〜48px 程度のレスポンシブ余白） */
+.lightbox-main{ position: relative; width: 100%; height: 100%; overflow: hidden; padding: clamp(8px, 4vw, 48px); }
+.lightbox-img{ object-fit: contain; will-change: transform; transition: transform .08s linear; }
+.lightbox-top{ position:absolute; left:0; right:0; top:6px; display:flex; justify-content:flex-end; padding: 8px max(12px, 4vw); pointer-events:none; }
+.lightbox-close{ pointer-events:auto; width:40px; height:40px; border-radius:999px; background: rgba(15,23,42,0.6); color:#fff; border:1px solid rgba(255,255,255,0.25); font-size:22px; display:grid; place-items:center; }
+.lightbox-nav{ position:absolute; left:0; right:0; bottom:48px; display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 0 max(12px, 4vw); pointer-events:none; }
+.lightbox-btn{ pointer-events:auto; width:44px; height:44px; border-radius:999px; background: rgba(15,23,42,0.6); color:#fff; border:1px solid rgba(255,255,255,0.25); font-size:26px; display:grid; place-items:center; }
+.lightbox-counter{ pointer-events:auto; color:#fff; background: rgba(15,23,42,0.6); border:1px solid rgba(255,255,255,0.25); padding:4px 10px; border-radius:999px; font-size:12px; }
+.lightbox-caption{ position:absolute; left:max(12px, 4vw); bottom:12px; color:#e5e7eb; font-size:14px; text-shadow: 0 1px 2px rgba(0,0,0,0.6); }

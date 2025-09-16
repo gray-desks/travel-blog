@@ -23,8 +23,8 @@ export default function RootLayout({ children }) {
         {/* サイト共通ヘッダー */}
         <Header />
 
-        {/* ページ固有コンテンツを描画する主要コンテナ（各ページで <main> を持つためここは div） */}
-        <div className="container main-container">
+        {/* ページ固有コンテンツを描画する主要コンテナ（本文用の独立幅 .content-container を適用） */}
+        <div className="content-container main-container">
           {children}
         </div>
 
