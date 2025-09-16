@@ -1,7 +1,9 @@
+'use client'
+
 // Next.js のクライアント遷移用コンポーネント
 // 記事詳細ページへのリンク生成に使用します
 import Link from 'next/link'
-import Image from 'next/image'
+import ImageWithSpinner from '@components/ImageWithSpinner'
 
 // 英語の分類値を日本語ラベルに変換
 const TYPE_LABELS = {
@@ -36,7 +38,7 @@ export default function ArticleCard({ article }) {
           {img ? (
             // 画像がある場合は Next.js の最適化 Image を使用
             <div className="card-img" style={{ position:'relative', overflow:'hidden' }}>
-              <Image
+              <ImageWithSpinner
                 src={img}
                 alt={article.title || ''}
                 fill
@@ -71,7 +73,7 @@ export default function ArticleCard({ article }) {
           <div className="card-gallery" aria-label="ギャラリー">
             {thumbs.map((url, idx) => (
               <Link key={idx} href={href} aria-label={`ギャラリー画像 ${idx + 1}`}> 
-                <Image src={url} alt="" width={36} height={36} className="thumb-img" />
+                <ImageWithSpinner src={url} alt="" width={36} height={36} className="thumb-img" />
               </Link>
             ))}
             {moreCount > 0 && (

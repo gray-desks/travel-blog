@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import Image from 'next/image'
+import ImageWithSpinner from '@components/ImageWithSpinner'
 import Lightbox from '@components/Lightbox'
 
 // シンプルなギャラリー（左右矢印 + サムネイル + 枚数カウンタ）
@@ -28,7 +28,7 @@ export default function Gallery({ images = [] }) {
     <div className="gallery" aria-label="ギャラリー">
       <div className="gallery-view">
         <div className="gallery-main" role="button" aria-label="画像を拡大" onClick={() => setOpen(true)}>
-          <Image src={valid[current]} alt="" fill className="gallery-img" sizes="(min-width: 1024px) 960px, 100vw" />
+          <ImageWithSpinner src={valid[current]} alt="" fill className="gallery-img" sizes="(min-width: 1024px) 960px, 100vw" />
         </div>
         <div className="gallery-nav" aria-hidden>
           <button className="gallery-btn" onClick={() => go(-1)} aria-label="前の画像">‹</button>
@@ -44,7 +44,7 @@ export default function Gallery({ images = [] }) {
             className={`gallery-thumb ${i === current ? 'is-current' : ''}`}
             aria-label={`画像 ${i + 1}`}
           >
-            <Image src={url} alt="" width={72} height={72} style={{ objectFit: 'cover' }} />
+            <ImageWithSpinner src={url} alt="" width={72} height={72} style={{ objectFit: 'cover' }} />
           </button>
         ))}
       </div>

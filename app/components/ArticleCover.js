@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from 'react'
-import Image from 'next/image'
+import ImageWithSpinner from '@components/ImageWithSpinner'
 import Lightbox from '@components/Lightbox'
 
 // 記事のカバー画像。クリックでライトボックス起動
@@ -14,7 +14,7 @@ export default function ArticleCover({ cover, title = '', images = [] }) {
   return (
     <>
       <div className="article-cover-wrap" role="button" aria-label="画像を拡大" onClick={() => setOpen(true)}>
-        <Image src={cover} alt={title} fill sizes="(min-width: 1024px) 960px, 100vw" className="article-cover-img" />
+        <ImageWithSpinner src={cover} alt={title} fill sizes="(min-width: 1024px) 960px, 100vw" className="article-cover-img" />
       </div>
       {open && (
         <Lightbox images={images} startIndex={startIndex >= 0 ? startIndex : 0} onClose={() => setOpen(false)} />
@@ -22,4 +22,3 @@ export default function ArticleCover({ cover, title = '', images = [] }) {
     </>
   )
 }
-

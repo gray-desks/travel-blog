@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import NextImage from 'next/image'
+import ImageWithSpinner from '@components/ImageWithSpinner'
 
 export default function Lightbox({ images = [], startIndex = 0, captions = [], onClose }) {
   const valid = Array.isArray(images) ? images.filter(Boolean) : []
@@ -114,7 +114,7 @@ export default function Lightbox({ images = [], startIndex = 0, captions = [], o
           onPointerLeave={onPointerUp}
           style={{ cursor: scale === 1 ? 'zoom-in' : 'grab' }}
         >
-          <NextImage
+          <ImageWithSpinner
             src={valid[index]}
             alt={captions[index] || ''}
             fill

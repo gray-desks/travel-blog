@@ -1,23 +1,182 @@
 
 > mvp-blog@0.1.0 dev
-> next dev -p 3000 -H 127.0.0.1
+> next dev --port 3001
 
    ▲ Next.js 15.5.3
-   - Local:        http://127.0.0.1:3000
-   - Network:      http://127.0.0.1:3000
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.1.7:3001
 
  ✓ Starting...
- ✓ Ready in 1073ms
+ ✓ Ready in 1215ms
  ○ Compiling / ...
- ✓ Compiled / in 1962ms (936 modules)
+ ✓ Compiled / in 2.9s (932 modules)
 [sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
-Image with src "https://cdn.sanity.io/images/c3twwalw/production/4883ea60ccf5c439afedc88bc5bda53b8fd2a62b-1456x816.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/47fcfab873df0b972d23ca2f6893067df9cdfefb-4000x1800.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "https://cdn.sanity.io/images/c3twwalw/production/dbb48be579e5a00229bff504be63dc1889018e18-1344x768.png" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/47fcfab873df0b972d23ca2f6893067df9cdfefb-4000x1800.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/0fcdb4f43f7725acc2c26ad2c4f209059053712f-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-Image with src "https://cdn.sanity.io/images/c3twwalw/production/878046e53d35b0417d7c2714fc7d05d9868de46b-1456x816.png" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/0fcdb4f43f7725acc2c26ad2c4f209059053712f-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/6548a3c03825b67beb2588be5469adefbb8f81a4-4000x1800.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
 Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
- GET / 200 in 3145ms
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/6548a3c03825b67beb2588be5469adefbb8f81a4-4000x1800.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/14c13356048cc2e80654c559045660c9fc067f82-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/14c13356048cc2e80654c559045660c9fc067f82-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f7c2ffa8f25bf430ccc04d9acad3983df9a124f8-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f7c2ffa8f25bf430ccc04d9acad3983df9a124f8-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/d0b84aeff6be7ed6fea7912ac4350b4433830043-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/1cf51164f1601ecdf092deb0907837a033ee4e32-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/9dc5ddb20673d92ba13d6c8c20fce1c154516180-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/04a4566d5215bf4a770d8b9ee2bca875ce299793-4096x3072.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/4678a16a55d81c4dfbb5043ee63a95ca798fe27e-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/4678a16a55d81c4dfbb5043ee63a95ca798fe27e-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/55b0c563501636b8cd9edb7ab9dee24c5cfeca5e-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/c271fe3981a0b5c48496fb5d585d44245ac6aa96-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/6edb2b7cb579aac0cdb8bbbba2e0b498ccc3822c-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dd1696a5614dee01bbb7469ffe43e76749c91e2b-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f3cbb31190f79c456dba3d35eb73e8912c0594c3-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f3cbb31190f79c456dba3d35eb73e8912c0594c3-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/8a95d06ca9eedbecff1a7a45dba734bc37b17f3b-1080x1109.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/8a95d06ca9eedbecff1a7a45dba734bc37b17f3b-1080x1109.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/e9572c238fc56b1c78eab71df0add1b72ca629b6-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/b7080f0da03e34d41577583d50388a920dfd2101-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/134644b976c8c89aff8f54c22c9d740401677de1-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dd503c07265a3baee9a04adc9f40fc1e78a25fcc-1536x1024.png" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dd503c07265a3baee9a04adc9f40fc1e78a25fcc-1536x1024.png" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/d904488797cc38bcc9cd25d5fae8911f51f87c2b-4000x3000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/d904488797cc38bcc9cd25d5fae8911f51f87c2b-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/1b7c5df46b06fe701169e6c5a1762e015cd481d2-3000x2250.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/1b7c5df46b06fe701169e6c5a1762e015cd481d2-3000x2250.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f761e3b53a851e1c7d4f825de4e22bcaf263edb8-4000x3000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f761e3b53a851e1c7d4f825de4e22bcaf263edb8-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f04c4b7760fce5f0abba6f998291abea08e7d735-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/20b2d3d236e77dac7cf2e179ac224af65f7af1cf-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+ GET / 200 in 4671ms
  ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
- ✓ Compiled /icon.svg in 177ms (697 modules)
- GET /icon.svg?c0693d97a33ac318 200 in 256ms
+ ✓ Compiled /icon.svg in 297ms (689 modules)
+ GET /icon.svg?c0693d97a33ac318 200 in 403ms
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+ GET /?page=2 200 in 572ms
+ GET /?page=1 200 in 832ms
+ ✓ Compiled /articles/[slug] in 369ms (958 modules)
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ArticlePage (app/(public)/articles/[slug]/page.js:16:11)
+  14 | export default async function ArticlePage({ params }) {
+  15 |   // 動的セグメントから記事スラッグを取得
+> 16 |   const { slug } = params
+     |           ^
+  17 |
+  18 |   // スラッグをもとに Sanity から記事を取得（存在しない場合は null）
+  19 |   const article = await getArticleBySlugCached(slug)
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(public)/articles/[slug]/page.js:86:11)
+  84 | export async function generateMetadata({ params }) {
+  85 |   // メタデータ生成用に記事タイトルを取得
+> 86 |   const { slug } = params
+     |           ^
+  87 |   const article = await getArticleBySlugCached(slug)
+  88 |
+  89 |   // 記事が無い場合はデフォルトタイトルを返す
+ GET /articles/ueno-shabuha-shabushabu-lunch 200 in 1430ms
+ GET / 200 in 406ms
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ArticlePage (app/(public)/articles/[slug]/page.js:16:11)
+  14 | export default async function ArticlePage({ params }) {
+  15 |   // 動的セグメントから記事スラッグを取得
+> 16 |   const { slug } = params
+     |           ^
+  17 |
+  18 |   // スラッグをもとに Sanity から記事を取得（存在しない場合は null）
+  19 |   const article = await getArticleBySlugCached(slug)
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(public)/articles/[slug]/page.js:86:11)
+  84 | export async function generateMetadata({ params }) {
+  85 |   // メタデータ生成用に記事タイトルを取得
+> 86 |   const { slug } = params
+     |           ^
+  87 |   const article = await getArticleBySlugCached(slug)
+  88 |
+  89 |   // 記事が無い場合はデフォルトタイトルを返す
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+ GET /articles/minatomirai-koya-tantanmen 200 in 735ms
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ArticlePage (app/(public)/articles/[slug]/page.js:16:11)
+  14 | export default async function ArticlePage({ params }) {
+  15 |   // 動的セグメントから記事スラッグを取得
+> 16 |   const { slug } = params
+     |           ^
+  17 |
+  18 |   // スラッグをもとに Sanity から記事を取得（存在しない場合は null）
+  19 |   const article = await getArticleBySlugCached(slug)
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(public)/articles/[slug]/page.js:86:11)
+  84 | export async function generateMetadata({ params }) {
+  85 |   // メタデータ生成用に記事タイトルを取得
+> 86 |   const { slug } = params
+     |           ^
+  87 |   const article = await getArticleBySlugCached(slug)
+  88 |
+  89 |   // 記事が無い場合はデフォルトタイトルを返す
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+ GET /articles/kenkoyuokusen-sento-tokyo 200 in 815ms
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/47fcfab873df0b972d23ca2f6893067df9cdfefb-4000x1800.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/47fcfab873df0b972d23ca2f6893067df9cdfefb-4000x1800.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/0fcdb4f43f7725acc2c26ad2c4f209059053712f-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/0fcdb4f43f7725acc2c26ad2c4f209059053712f-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/6548a3c03825b67beb2588be5469adefbb8f81a4-4000x1800.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/6548a3c03825b67beb2588be5469adefbb8f81a4-4000x1800.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/14c13356048cc2e80654c559045660c9fc067f82-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/14c13356048cc2e80654c559045660c9fc067f82-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f7c2ffa8f25bf430ccc04d9acad3983df9a124f8-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f7c2ffa8f25bf430ccc04d9acad3983df9a124f8-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/d0b84aeff6be7ed6fea7912ac4350b4433830043-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/1cf51164f1601ecdf092deb0907837a033ee4e32-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/9dc5ddb20673d92ba13d6c8c20fce1c154516180-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/04a4566d5215bf4a770d8b9ee2bca875ce299793-4096x3072.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/4678a16a55d81c4dfbb5043ee63a95ca798fe27e-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/4678a16a55d81c4dfbb5043ee63a95ca798fe27e-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/55b0c563501636b8cd9edb7ab9dee24c5cfeca5e-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/c271fe3981a0b5c48496fb5d585d44245ac6aa96-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/6edb2b7cb579aac0cdb8bbbba2e0b498ccc3822c-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dd1696a5614dee01bbb7469ffe43e76749c91e2b-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f3cbb31190f79c456dba3d35eb73e8912c0594c3-8000x6000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f3cbb31190f79c456dba3d35eb73e8912c0594c3-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/8a95d06ca9eedbecff1a7a45dba734bc37b17f3b-1080x1109.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/8a95d06ca9eedbecff1a7a45dba734bc37b17f3b-1080x1109.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/e9572c238fc56b1c78eab71df0add1b72ca629b6-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/b7080f0da03e34d41577583d50388a920dfd2101-8000x6000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/134644b976c8c89aff8f54c22c9d740401677de1-6000x8000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dd503c07265a3baee9a04adc9f40fc1e78a25fcc-1536x1024.png" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/dd503c07265a3baee9a04adc9f40fc1e78a25fcc-1536x1024.png" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/d904488797cc38bcc9cd25d5fae8911f51f87c2b-4000x3000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/d904488797cc38bcc9cd25d5fae8911f51f87c2b-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/1b7c5df46b06fe701169e6c5a1762e015cd481d2-3000x2250.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/1b7c5df46b06fe701169e6c5a1762e015cd481d2-3000x2250.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f761e3b53a851e1c7d4f825de4e22bcaf263edb8-4000x3000.jpg" is using quality "70" which is not configured in images.qualities. This config will be required starting in Next.js 16.
+Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f761e3b53a851e1c7d4f825de4e22bcaf263edb8-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/f04c4b7760fce5f0abba6f998291abea08e7d735-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+Image with src "https://cdn.sanity.io/images/c3twwalw/production/20b2d3d236e77dac7cf2e179ac224af65f7af1cf-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
+ GET / 200 in 1064ms
