@@ -180,3 +180,97 @@ Image with src "https://cdn.sanity.io/images/c3twwalw/production/f761e3b53a851e1
 Image with src "https://cdn.sanity.io/images/c3twwalw/production/f04c4b7760fce5f0abba6f998291abea08e7d735-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
 Image with src "https://cdn.sanity.io/images/c3twwalw/production/20b2d3d236e77dac7cf2e179ac224af65f7af1cf-4000x3000.jpg" is using deprecated "onLoadingComplete" property. Please use the "onLoad" property instead.
  GET / 200 in 1064ms
+ GET /?page=2 200 in 443ms
+ GET /?page=1 200 in 439ms
+ ✓ Compiled in 281ms (941 modules)
+ ✓ Compiled in 176ms (941 modules)
+ ✓ Compiled in 124ms (941 modules)
+ GET /articles/ueno-shabuha-shabushabu-lunch 200 in 147ms
+ ○ Compiling /privacy ...
+ ✓ Compiled /privacy in 674ms (948 modules)
+ ⨯ Error: ENOENT: no such file or directory, open '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js'
+    at <unknown> (.next/server/app/(public)/page.js:496:47)
+    at Object.<anonymous> (.next/server/app/(public)/page.js:499:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js',
+  page: '/'
+}
+ ⨯ Error: ENOENT: no such file or directory, open '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js'
+    at <unknown> (.next/server/app/(public)/contact/page.js:344:47)
+    at Object.<anonymous> (.next/server/app/(public)/contact/page.js:347:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js',
+  page: '/contact'
+}
+ ⨯ Error: ENOENT: no such file or directory, open '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js'
+    at <unknown> (.next/server/app/(public)/about/page.js:333:47)
+    at Object.<anonymous> (.next/server/app/(public)/about/page.js:336:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js',
+  page: '/about'
+}
+ ⨯ Error: ENOENT: no such file or directory, open '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js'
+    at <unknown> (.next/server/app/(public)/privacy/page.js:333:47)
+    at Object.<anonymous> (.next/server/app/(public)/privacy/page.js:336:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/vendor-chunks/next.js',
+  page: '/privacy'
+}
+ ○ Compiling /_error ...
+ GET /articles/ueno-shabuha-shabushabu-lunch 200 in 1365ms
+ ✓ Compiled /_error in 976ms (1288 modules)
+ GET / 500 in 2072ms
+ GET /contact 500 in 2072ms
+ GET /about 500 in 2072ms
+ GET /privacy 500 in 2072ms
+ GET /contact 200 in 183ms
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at ArticlePage (app/(public)/articles/[slug]/page.js:16:11)
+  14 | export default async function ArticlePage({ params }) {
+  15 |   // 動的セグメントから記事スラッグを取得
+> 16 |   const { slug } = params
+     |           ^
+  17 |
+  18 |   // スラッグをもとに Sanity から記事を取得（存在しない場合は null）
+  19 |   const article = await getArticleBySlugCached(slug)
+Error: Route "/articles/[slug]" used `params.slug`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at Module.generateMetadata (app/(public)/articles/[slug]/page.js:86:11)
+  84 | export async function generateMetadata({ params }) {
+  85 |   // メタデータ生成用に記事タイトルを取得
+> 86 |   const { slug } = params
+     |           ^
+  87 |   const article = await getArticleBySlugCached(slug)
+  88 |
+  89 |   // 記事が無い場合はデフォルトタイトルを返す
+ GET /articles/ueno-shabuha-shabushabu-lunch 200 in 118ms
+ ⨯ Failed to generate static paths for /articles/[slug]:
+[Error: Cannot find module './vendor-chunks/@sanity.js'
+Require stack:
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/webpack-runtime.js
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/.next/server/app/(public)/articles/[slug]/page.js
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/node_modules/next/dist/server/require.js
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/node_modules/next/dist/server/load-components.js
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/node_modules/next/dist/build/utils.js
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/node_modules/next/dist/server/dev/static-paths-worker.js
+- /Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/node_modules/next/dist/compiled/jest-worker/processChild.js] {
+  type: 'Error',
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /?page=1 200 in 883ms
+ GET / 200 in 1083ms
+ GET / 200 in 720ms
+ ✓ Compiled /icon.svg in 240ms (903 modules)
+ GET /icon.svg?c0693d97a33ac318 200 in 334ms
+[sanityClient] NEXT_PUBLIC_SANITY_PROJECT_ID is not set; falling back to default projectId
+ GET / 200 in 966ms
+ GET /icon.svg?c0693d97a33ac318 200 in 12ms

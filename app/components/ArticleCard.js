@@ -43,7 +43,6 @@ export default function ArticleCard({ article }) {
                 alt={article.title || ''}
                 fill
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                quality={70}
                 style={{ objectFit: 'cover' }}
                 priority={false}
               />

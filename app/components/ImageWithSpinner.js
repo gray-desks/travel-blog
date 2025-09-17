@@ -10,6 +10,7 @@ export default function ImageWithSpinner({
   wrapperClassName = '',
   spinnerClassName = '',
   spinnerLabel = '画像を読み込み中',
+  onLoad,
   onLoadingComplete,
   onError,
   ...props
@@ -34,9 +35,14 @@ export default function ImageWithSpinner({
       <Image
         {...props}
         className={imageClasses || undefined}
-        onLoadingComplete={(result) => {
-          setLoading(false)
-          if (typeof onLoadingComplete === 'function') onLoadingComplete(result)
+        onLoad={(event) => {
+          if (loading) setLoading(false)
+          if (typeof onLoad === 'function') onLoad(event)
+          if (typeof onLoadingComplete === 'function') {
+            try {
+              onLoadingComplete(event?.currentTarget)
+            } catch {}
+          }
         }}
         onError={(event) => {
           setLoading(false)
