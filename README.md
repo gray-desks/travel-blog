@@ -29,7 +29,7 @@ Next.js App Router と Sanity を用いた、読み取り専用の最小構成�
   - サイトマップ: `/sitemap.xml` が自動生成されます
 
 Studio（`cd studio`）
-- `npm run dev` — Sanity Studio をローカル起動
+- `npm run dev` — Sanity Studio をローカル起動（http://localhost:3333）
 - `npm run build` — Studio の静的ビルド
 - `npm run deploy` — Studio を Sanity にデプロイ
 
