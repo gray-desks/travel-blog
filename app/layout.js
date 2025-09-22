@@ -4,6 +4,9 @@
 import './styles.css'
 import Header from '@components/Header'
 
+const DEFAULT_ADSENSE_CLIENT = 'ca-pub-6855589905040705'
+const ADSENSE_CLIENT = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || DEFAULT_ADSENSE_CLIENT).trim()
+
 export const metadata = {
   // 既定のメタデータ（各ページの generateMetadata/metadata で上書き可能）
   title: 'ブログ',
@@ -17,6 +20,13 @@ export default function RootLayout({ children }) {
       <head>
         {/* Sanity CDN への事前接続で画像読み込みを高速化 */}
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        {ADSENSE_CLIENT && (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+            crossOrigin="anonymous"
+          />
+        )}
       </head>
       {/* グローバルなボディ設定と共通のレイアウト枠 */}
       <body style={{ margin: 0, fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', lineHeight: 1.6, display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>

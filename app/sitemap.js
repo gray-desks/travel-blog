@@ -4,7 +4,9 @@
 import { client } from '@lib/sanityClient'
 import { allArticleSlugsForSitemap } from '@lib/queries'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+// Vercel 環境変数が未設定でも本番ドメインで生成されるようフォールバックを用意
+const DEFAULT_SITE_URL = 'https://travel-blog-bay-ten.vercel.app'
+const BASE_URL = (process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, '')
 
 export default async function sitemap() {
   let articles = []
@@ -35,4 +37,3 @@ export default async function sitemap() {
 
   return [...staticEntries, ...articleEntries]
 }
-
