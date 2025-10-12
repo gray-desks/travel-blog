@@ -1,6 +1,9 @@
 // ルートレイアウト: 全ページ共通のHTML骨組みとグローバルスタイルを提供
 // - App Router の layout.js は子ページを受け取り、共通ヘッダー/フッターを適用
 // - Server Component（デフォルト）
+
+// 変更しました。
+
 import './styles.css'
 import Header from '@components/Header'
 

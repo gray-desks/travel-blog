@@ -19,7 +19,8 @@
       "Read(//Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/app/**)",
       "Read(//Users/yamazaki/名称未設定フォルダ/Development/旅ブログ/**)",
       "Bash(git commit:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
