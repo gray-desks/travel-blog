@@ -1,0 +1,254 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10001;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+    box-shadow: var(--shadow-sm);
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--color-ink);
+    text-decoration: none;
+    font-weight: 700;
+    /* z-index: 10001; removed */
+    /* メニューより上に表示 */
+    position: relative;
+}
+
+.brandLogo {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #e60026);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(230, 0, 38, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.brandName {
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+}
+
+/* Desktop Nav */
+.navDesktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .navDesktop {
+        display: block;
+    }
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navLink {
+    display: inline-block;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition-base);
+}
+
+.navLink:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.navLinkActive {
+    background: var(--brand-primary);
+    color: #fff;
+}
+
+.navLinkActive:hover {
+    background: var(--brand-primary);
+}
+
+/* ... (existing styles) ... */
+
+.panelLink {
+    display: inline-block;
+    /* changed from block to inline-block for better centering with decoration */
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: 8px 16px;
+    /* Added horizontal padding */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, color 0.2s ease;
+    position: relative;
+}
+
+.panelLink:hover {
+    color: var(--brand-primary);
+}
+
+.panelLinkActive {
+    color: var(--brand-primary);
+}
+
+.panelLinkActive::after {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: currentColor;
+    border-radius: 50%;
+    margin: 8px auto 0;
+}
+
+/* Mobile Toggle */
+.toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    /* z-index: 10001; removed as header handles it */
+    /* メニューより上に表示 */
+    transition: background 0.2s ease;
+}
+
+.toggle:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 768px) {
+    .toggle {
+        display: none;
+    }
+}
+
+.bar {
+    position: absolute;
+    left: 12px;
+    width: 20px;
+    height: 2px;
+    background: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease, width 0.2s ease;
+}
+
+.bar:nth-child(1) {
+    top: 14px;
+}
+
+.bar:nth-child(2) {
+    top: 21px;
+}
+
+.bar:nth-child(3) {
+    top: 28px;
+}
+
+.toggleActive .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.toggleActive .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+
+.toggleActive .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Panel (Full Screen Overlay) */
+.panel {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.panelOpen {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.panelNav {
+    width: 100%;
+    max-width: 320px;
+    padding: var(--space-4);
+}
+
+.panelList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Old panelLink styles removed */
+
+/* Stagger Animation */
+.panelOpen .panelLink {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.panelOpen .panelList li:nth-child(1) .panelLink {
+    transition-delay: 0.1s;
+}
+
+.panelOpen .panelList li:nth-child(2) .panelLink {
+    transition-delay: 0.15s;
+}
+
+.panelOpen .panelList li:nth-child(3) .panelLink {
+    transition-delay: 0.2s;
+}
+
+.panelOpen .panelList li:nth-child(4) .panelLink {
+    transition-delay: 0.25s;
+}

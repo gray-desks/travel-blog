@@ -1,0 +1,103 @@
+.pageLayout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.mainContainer {
+    flex: 1;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+/* Footer Styles */
+.siteFooter {
+    margin-top: var(--space-16);
+    color: #f4ede1;
+    font-size: 0.875rem;
+}
+
+.footerHero {
+    background:
+        radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.1), transparent 50%),
+        radial-gradient(circle at 80% 0%, rgba(197, 160, 89, 0.15), transparent 50%),
+        linear-gradient(180deg, #2c0003, #50050a 60%, #1a0001);
+    padding: var(--space-12) 0;
+    border-top: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.footerInner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.footerBrand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: #ffe7d9;
+}
+
+.brandLogo {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ff6b6b, #e60026);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(230, 0, 38, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.brandName {
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    font-size: 1.125rem;
+}
+
+.footerTagline {
+    color: #f6dcc9;
+    font-size: 0.8125rem;
+    opacity: 0.8;
+}
+
+.footerNav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.footerNav a {
+    color: #ffe7d9;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.footerNav a:hover {
+    color: #fff;
+    background: rgba(255, 231, 217, 0.1);
+}
+
+.copyright {
+    margin-top: var(--space-4);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+}

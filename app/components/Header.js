@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import styles from './Header.module.css'
 
 const NAV_LINKS = [
   { href: '/', label: '記事一覧' },
@@ -24,11 +25,11 @@ export default function Header() {
   // Body スクロールロック + Escape で閉じる + フォーカストラップ
   useEffect(() => {
     if (open) {
-      document.body.classList.add('no-scroll')
+      document.body.style.overflow = 'hidden'
       // 初期フォーカス
       setTimeout(() => { firstLinkRef.current?.focus() }, 0)
     } else {
-      document.body.classList.remove('no-scroll')
+      document.body.style.overflow = ''
     }
 
     const onKeyDown = (e) => {
@@ -57,61 +58,65 @@ export default function Header() {
   }
 
   return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <a href="/" className="brand">
-          <span className="brand-logo" aria-hidden="true">旅</span>
-          <span className="brand-name">旅ログ</span>
-        </a>
+    <>
+      <header className={styles.header}>
+        <div className={styles.inner}>
+          <a href="/" className={styles.brand}>
+            <span className={styles.brandLogo} aria-hidden="true">旅</span>
+            <span className={styles.brandName}>旅ログ</span>
+          </a>
 
-        {/* デスクトップ・ナビ */}
-        <nav aria-label="グローバルナビ" className="header-nav header-nav--desktop">
-          <ul className="header-nav-list">
-            {NAV_LINKS.map(link => (
-              <li key={link.href}>
-                <Link href={link.href} aria-current={isActive(link.href) ? 'page' : undefined} className={isActive(link.href) ? 'active' : undefined}>
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          {/* デスクトップ・ナビ */}
+          <nav aria-label="グローバルナビ" className={styles.navDesktop}>
+            <ul className={styles.navList}>
+              {NAV_LINKS.map(link => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                    className={`${styles.navLink} ${isActive(link.href) ? styles.navLinkActive : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        {/* モバイル用トグル（アニメーションするハンバーガー） */}
-        <button
-          className={`header-toggle ${open ? 'active' : ''}`}
-          aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
-          aria-expanded={open}
-          aria-controls="global-nav"
-          onClick={() => setOpen(o => !o)}
-        >
-          <span className="bar" aria-hidden="true" />
-          <span className="bar" aria-hidden="true" />
-          <span className="bar" aria-hidden="true" />
-        </button>
-      </div>
+          {/* モバイル用トグル（アニメーションするハンバーガー） */}
+          <button
+            className={`${styles.toggle} ${open ? styles.toggleActive : ''}`}
+            aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
+            aria-expanded={open}
+            aria-controls="global-nav"
+            onClick={() => setOpen(o => !o)}
+          >
+            <span className={styles.bar} aria-hidden="true" />
+            <span className={styles.bar} aria-hidden="true" />
+            <span className={styles.bar} aria-hidden="true" />
+          </button>
+        </div>
+      </header>
 
-      {/* オーバーレイ */}
-      {open && <button className="header-overlay" aria-label="メニューを閉じる" onClick={() => setOpen(false)} />}
-
-      {/* モバイル・パネル */}
+      {/* モバイル・パネル（全画面オーバーレイ） */}
       <div
         ref={panelRef}
-        className={`header-panel ${open ? 'open' : ''}`}
+        className={`${styles.panel} ${open ? styles.panelOpen : ''}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="global-nav-title"
       >
-        <nav aria-label="グローバルナビ" id="global-nav">
+        <nav aria-label="グローバルナビ" id="global-nav" className={styles.panelNav}>
           <h2 id="global-nav-title" className="sr-only">グローバルナビ</h2>
-          <ul className="header-nav-list">
+          <ul className={styles.panelList}>
             {NAV_LINKS.map((link, idx) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   aria-current={isActive(link.href) ? 'page' : undefined}
-                  className={isActive(link.href) ? 'active' : undefined}
+                  className={`${styles.panelLink} ${isActive(link.href) ? styles.panelLinkActive : ''}`}
                   ref={idx === 0 ? firstLinkRef : (idx === NAV_LINKS.length - 1 ? lastLinkRef : undefined)}
+                  onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </Link>
@@ -120,6 +125,6 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-    </header>
+    </>
   )
 }

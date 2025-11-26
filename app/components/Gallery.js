@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import ImageWithSpinner from '@components/ImageWithSpinner'
 import Lightbox from '@components/Lightbox'
+import styles from './Gallery.module.css'
 
 // シンプルなギャラリー（左右矢印 + サムネイル + 枚数カウンタ）
 // props: images: string[]
@@ -25,23 +26,23 @@ export default function Gallery({ images = [] }) {
   }
 
   return (
-    <div className="gallery" aria-label="ギャラリー">
-      <div className="gallery-view">
-        <div className="gallery-main" role="button" aria-label="画像を拡大" onClick={() => setOpen(true)}>
-          <ImageWithSpinner src={valid[current]} alt="" fill className="gallery-img" sizes="(min-width: 1024px) 960px, 100vw" />
+    <div className={styles.gallery} aria-label="ギャラリー">
+      <div className={styles.view}>
+        <div className={styles.main} role="button" aria-label="画像を拡大" onClick={() => setOpen(true)}>
+          <ImageWithSpinner src={valid[current]} alt="" fill className={styles.img} sizes="(min-width: 1024px) 960px, 100vw" />
         </div>
-        <div className="gallery-nav" aria-hidden>
-          <button className="gallery-btn" onClick={() => go(-1)} aria-label="前の画像">‹</button>
-          <button className="gallery-btn" onClick={() => go(1)} aria-label="次の画像">›</button>
+        <div className={styles.nav} aria-hidden>
+          <button className={styles.btn} onClick={() => go(-1)} aria-label="前の画像">‹</button>
+          <button className={styles.btn} onClick={() => go(1)} aria-label="次の画像">›</button>
         </div>
-        <div className="gallery-counter" aria-live="polite">{current + 1}/{total}</div>
+        <div className={styles.counter} aria-live="polite">{current + 1}/{total}</div>
       </div>
-      <div className="gallery-thumbs" role="list" aria-label="サムネイル">
+      <div className={styles.thumbs} role="list" aria-label="サムネイル">
         {valid.map((url, i) => (
           <button
             key={url + i}
             onClick={() => setIdx(i)}
-            className={`gallery-thumb ${i === current ? 'is-current' : ''}`}
+            className={`${styles.thumb} ${i === current ? styles.isCurrent : ''}`}
             aria-label={`画像 ${i + 1}`}
           >
             <ImageWithSpinner src={url} alt="" width={72} height={72} style={{ objectFit: 'cover' }} />

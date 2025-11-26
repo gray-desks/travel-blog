@@ -7,6 +7,7 @@ import { getArticleBySlugCached } from '@lib/queries'
 import { renderPortableTextLite } from '@lib/portableTextLite'
 import Gallery from '@components/Gallery'
 import ArticleCover from '@components/ArticleCover'
+import styles from './page.module.css'
 
 // ISR 設定: 60秒ごとに再検証して静的ページを自動更新
 export const revalidate = 60
@@ -36,23 +37,23 @@ export default async function ArticlePage({ params }) {
   const allImages = [coverUrl, ...gallery.filter((u) => u !== coverUrl)].filter(Boolean)
 
   return (
-    <article className="narrow">
-      <div className="article-card">
+    <article className={styles.container}>
+      <div className={styles.card}>
         {/* カバー画像（カード最上部） */}
         <ArticleCover cover={coverUrl} title={article.title || ''} images={allImages} />
 
         {/* タイトル */}
-        <h1 className="article-title" style={{ marginTop: 12 }}>{article.title}</h1>
+        <h1 className={styles.title}>{article.title}</h1>
 
         {/* メタ情報（チップ型） */}
-        <div className="chips">
+        <div className={styles.chips}>
           {article.type && (
-            <span className={`chip chip--type`}>{TYPE_LABELS[article.type] || article.type}</span>
+            <span className={`${styles.chip} ${styles.chipType}`}>{TYPE_LABELS[article.type] || article.type}</span>
           )}
-          {article.prefecture && <span className="chip">{article.prefecture}</span>}
-          {article.placeName && <span className="chip">{article.placeName}</span>}
+          {article.prefecture && <span className={styles.chip}>{article.prefecture}</span>}
+          {article.placeName && <span className={styles.chip}>{article.placeName}</span>}
           {article.publishedAt && (
-            <time className="chip chip--muted" dateTime={article.publishedAt}>
+            <time className={`${styles.chip} ${styles.chipMuted}`} dateTime={article.publishedAt}>
               {new Date(article.publishedAt).toLocaleDateString('ja-JP')}
             </time>
           )}
@@ -60,21 +61,20 @@ export default async function ArticlePage({ params }) {
 
         {/* 本文（Portable Text を最小レンダラーで HTML に変換して描画）*/}
         <div
-          className="prose"
-          style={{ fontSize: 16 }}
+          className={styles.prose}
           dangerouslySetInnerHTML={{ __html: renderPortableTextLite(article.body) }}
         />
 
         {/* ギャラリー（画像があれば） */}
         {gallery.length > 0 && (
-          <section className="article-gallery">
+          <section className={styles.gallerySection}>
             <Gallery images={gallery} />
           </section>
         )}
 
         {/* 一覧へ戻る */}
-        <div className="center" style={{ marginTop: 16 }}>
-          <a href="/" className="btn btn-secondary">← 記事一覧に戻る</a>
+        <div className={styles.backLinkWrap}>
+          <a href="/" className={styles.backLink}>← 記事一覧に戻る</a>
         </div>
       </div>
     </article>

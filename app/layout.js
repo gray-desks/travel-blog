@@ -2,27 +2,42 @@
 // - App Router の layout.js は子ページを受け取り、共通ヘッダー/フッターを適用
 // - Server Component（デフォルト）
 
-// 変更しました。
-
-import './styles.css'
+import './globals.css'
+import styles from './layout.module.css'
 import Header from '@components/Header'
 
 const DEFAULT_ADSENSE_CLIENT = 'ca-pub-6855589905040705'
 const ADSENSE_CLIENT = (process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID || DEFAULT_ADSENSE_CLIENT).trim()
 
 export const metadata = {
-  // 既定のメタデータ（各ページの generateMetadata/metadata で上書き可能）
-  title: 'ブログ',
-  description: 'Sanity読み取り専用・最小MVPブログ'
+  title: {
+    template: '%s | 旅ログ',
+    default: '旅ログ - 気ままに綴る、旅の記録',
+  },
+  description: '週末の小旅行から心に残る絶景まで。訪れた場所の空気感や美味しい思い出を、写真とともにマイペースに残しています。',
+  keywords: ['旅行', '観光', '写真', 'ブログ', 'グルメ'],
+  authors: [{ name: 'Yamazaki' }],
+  creator: 'Yamazaki',
+  themeColor: '#be1e3e',
+  openGraph: {
+    type: 'website',
+    locale: 'ja_JP',
+    url: 'https://example.com', // Replace with actual URL
+    siteName: '旅ログ',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    // 言語属性を付与したHTMLルート
     <html lang="ja">
       <head>
-        {/* Sanity CDN への事前接続で画像読み込みを高速化 */}
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho+B1:wght@600;700&display=swap"
+          rel="stylesheet"
+        />
         {ADSENSE_CLIENT && (
           <script
             async
@@ -31,30 +46,24 @@ export default function RootLayout({ children }) {
           />
         )}
       </head>
-      {/* グローバルなボディ設定と共通のレイアウト枠 */}
-      <body style={{ margin: 0, fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif', lineHeight: 1.6, display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
-        {/* サイト共通ヘッダー */}
+      <body className={styles.pageLayout}>
         <Header />
 
-        {/* ページ固有コンテンツを描画する主要コンテナ（本文用の独立幅 .content-container を適用） */}
-        <div className="content-container main-container">
+        <div className={styles.mainContainer}>
           {children}
         </div>
 
-        {/* サイト共通フッター（1セクションに集約） */}
-        <footer className="site-footer">
-          <div className="footer-hero">
-            <div className="container footer-inner">
-              {/* ブランド表示（ロゴ + キャッチ） */}
-              <div className="footer-brand">
-                <span className="brand-logo" aria-hidden="true">旅</span>
+        <footer className={styles.siteFooter}>
+          <div className={styles.footerHero}>
+            <div className={styles.footerInner}>
+              <div className={styles.footerBrand}>
+                <span className={styles.brandLogo} aria-hidden="true">旅</span>
                 <div>
-                  <div className="brand-name">旅ログ</div>
-                  <div className="footer-tagline">日本の旅の記録をゆるく発信</div>
+                  <div className={styles.brandName}>旅ログ</div>
+                  <div className={styles.footerTagline}>日々の旅の記録をゆるく発信</div>
                 </div>
               </div>
-              {/* フッターナビ（重要ページ） */}
-              <nav aria-label="フッターナビ" className="footer-nav">
+              <nav aria-label="フッターナビ" className={styles.footerNav}>
                 <ul>
                   <li><a href="/">記事一覧</a></li>
                   <li><a href="/about">このサイトについて</a></li>
@@ -63,8 +72,7 @@ export default function RootLayout({ children }) {
                 </ul>
               </nav>
             </div>
-            {/* コピーライト（下段を廃止し、ここに統合） */}
-            <div className="container" style={{ paddingTop: 12, textAlign: 'center', color: '#cbd5e1' }}>
+            <div className={styles.copyright}>
               © {new Date().getFullYear()} 旅ログ
             </div>
           </div>
