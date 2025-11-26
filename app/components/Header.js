@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation'
 import styles from './Header.module.css'
 
 const NAV_LINKS = [
-  { href: '/', label: '記事一覧' },
-  { href: '/about', label: 'このサイトについて' },
-  { href: '/contact', label: 'お問い合わせ' },
-  { href: '/privacy', label: 'プライバシーポリシー' },
+  { href: '/', label: '記事一覧', en: 'Journal' },
+  { href: '/about', label: 'このサイトについて', en: 'About' },
+  { href: '/contact', label: 'お問い合わせ', en: 'Contact' },
+  { href: '/privacy', label: 'プライバシーポリシー', en: 'Privacy' },
 ]
 
 export default function Header() {
@@ -106,6 +106,14 @@ export default function Header() {
         aria-modal="true"
         aria-labelledby="global-nav-title"
       >
+        <button
+          className={styles.closeBtn}
+          aria-label="メニューを閉じる"
+          onClick={() => setOpen(false)}
+        >
+          <span className={styles.closeBar} />
+          <span className={styles.closeBar} />
+        </button>
         <nav aria-label="グローバルナビ" id="global-nav" className={styles.panelNav}>
           <h2 id="global-nav-title" className="sr-only">グローバルナビ</h2>
           <ul className={styles.panelList}>
@@ -118,7 +126,8 @@ export default function Header() {
                   ref={idx === 0 ? firstLinkRef : (idx === NAV_LINKS.length - 1 ? lastLinkRef : undefined)}
                   onClick={() => setOpen(false)}
                 >
-                  {link.label}
+                  <span className={styles.enLabel}>{link.en}</span>
+                  <span className={styles.jaLabel}>{link.label}</span>
                 </Link>
               </li>
             ))}

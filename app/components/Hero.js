@@ -5,23 +5,22 @@ import styles from './Hero.module.css'
 // - 検索フォームなどの子要素（children）を内側に差し込むコンテナ
 export default function Hero({ children }) {
   return (
-    <section className={styles.hero}>
-      <div className={styles.inner}>
-        <div className={styles.copy}>
-          <p className={styles.kicker}>Personal Travel Journal</p>
-          {/* メイン見出し（キャッチコピー） */}
-          <h1 className={styles.title}>気ままに綴る、旅の記録</h1>
-          {/* サブコピー（説明文） */}
-          <p className={styles.sub}>
-            週末の小旅行から、心に残る絶景まで。<br />
-            訪れた場所の空気感や美味しい思い出を、<br />
-            写真とともにマイペースに残しています。
-          </p>
+    <section className={styles.container}>
+      <div className={styles.hero}>
+        <div className={styles.inner}>
+          <div className={styles.copy}>
+            <p className={styles.kicker}>Personal Travel Journal</p>
+            <h1 className={styles.title}>気ままに綴る、旅の記録</h1>
+            <p className={styles.sub}>
+              週末の小旅行から、心に残る絶景まで。<br />
+              訪れた場所の空気感や美味しい思い出を、<br />
+              写真とともにマイペースに残しています。
+            </p>
+          </div>
         </div>
-        <div className={styles.formWrap}>
-          {/* 子要素（検索フォームなど）をここに描画 */}
-          {children}
-        </div>
+      </div>
+      <div className={styles.floatingForm}>
+        {children}
       </div>
     </section>
   )

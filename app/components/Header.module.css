@@ -1,53 +1,53 @@
 .header {
     position: sticky;
     top: 0;
-    z-index: 10001;
-    background: rgba(255, 255, 255, 0.9);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
 .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 72px;
     width: 100%;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 var(--space-4);
+    padding: 0 var(--space-6);
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-3);
     color: var(--color-ink);
     text-decoration: none;
-    font-weight: 700;
-    /* z-index: 10001; removed */
-    /* メニューより上に表示 */
     position: relative;
+    z-index: 1001;
 }
 
 .brandLogo {
     display: inline-grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ff6b6b, #e60026);
+    background: var(--brand-primary);
     color: #fff;
-    font-size: 0.875rem;
-    font-weight: 800;
-    box-shadow: 0 4px 12px rgba(230, 0, 38, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(190, 30, 62, 0.3);
 }
 
 .brandName {
-    font-size: 1.125rem;
-    letter-spacing: 0.02em;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
 }
 
 /* Desktop Nav */
@@ -64,34 +64,38 @@
 .navList {
     list-style: none;
     display: flex;
-    gap: var(--space-2);
+    gap: var(--space-1);
     margin: 0;
     padding: 0;
     align-items: center;
 }
 
 .navLink {
-    display: inline-block;
-    color: var(--color-ink);
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--radius-md);
+    color: var(--color-text-sub);
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 999px;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 500;
-    transition: var(--transition-base);
+    transition: all 0.2s ease;
 }
 
 .navLink:hover {
-    background: rgba(0, 0, 0, 0.04);
+    color: var(--brand-primary);
+    background: rgba(190, 30, 62, 0.04);
 }
 
 .navLinkActive {
-    background: var(--brand-primary);
-    color: #fff;
+    color: var(--brand-primary);
+    background: rgba(190, 30, 62, 0.08);
+    font-weight: 600;
 }
 
 .navLinkActive:hover {
-    background: var(--brand-primary);
+    background: rgba(190, 30, 62, 0.12);
 }
 
 /* ... (existing styles) ... */
@@ -141,8 +145,8 @@
     background: transparent;
     position: relative;
     cursor: pointer;
-    /* z-index: 10001; removed as header handles it */
-    /* メニューより上に表示 */
+    z-index: 10001;
+    /* Ensure above panel */
     transition: background 0.2s ease;
 }
 
@@ -195,22 +199,24 @@
 .panel {
     position: fixed;
     inset: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
+    /* Clean white background */
     backdrop-filter: blur(16px);
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.4s ease, visibility 0.4s;
+    clip-path: circle(30px at calc(100% - 40px) 36px);
+    transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    /* Expo ease */
+    opacity: 0;
 }
 
 .panelOpen {
-    opacity: 1;
-    visibility: visible;
     pointer-events: auto;
+    clip-path: circle(150% at calc(100% - 40px) 36px);
+    opacity: 1;
 }
 
 .panelNav {
@@ -226,10 +232,99 @@
     gap: var(--space-6);
     margin: 0;
     padding: 0;
-    text-align: center;
+    text-align: left;
+    /* Align left for a cleaner look */
+    max-width: 240px;
+    margin: 0 auto;
 }
 
-/* Old panelLink styles removed */
+.panelLink {
+    display: flex;
+    flex-direction: column;
+    /* Stack En and Ja */
+    align-items: flex-start;
+    text-decoration: none;
+    padding: 8px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.enLabel {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 300;
+    /* Light weight */
+    color: var(--color-ink);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.jaLabel {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+    margin-top: 4px;
+}
+
+.panelLink:hover .enLabel,
+.panelLinkActive .enLabel {
+    font-weight: 600;
+    color: var(--brand-primary);
+}
+
+.panelLink:hover .jaLabel,
+.panelLinkActive .jaLabel {
+    color: var(--brand-primary);
+}
+
+/* Remove old active dot */
+.panelLinkActive::after {
+    display: none;
+}
+
+/* Close Button inside Panel */
+.closeBtn {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    /* Match header padding roughly */
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10002;
+}
+
+.closeBar {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.closeBar:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.closeBar:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+.closeBtn:hover .closeBar {
+    background: var(--brand-primary);
+}
+
 
 /* Stagger Animation */
 .panelOpen .panelLink {
@@ -238,17 +333,17 @@
 }
 
 .panelOpen .panelList li:nth-child(1) .panelLink {
-    transition-delay: 0.1s;
-}
-
-.panelOpen .panelList li:nth-child(2) .panelLink {
-    transition-delay: 0.15s;
-}
-
-.panelOpen .panelList li:nth-child(3) .panelLink {
     transition-delay: 0.2s;
 }
 
-.panelOpen .panelList li:nth-child(4) .panelLink {
+.panelOpen .panelList li:nth-child(2) .panelLink {
     transition-delay: 0.25s;
+}
+
+.panelOpen .panelList li:nth-child(3) .panelLink {
+    transition-delay: 0.3s;
+}
+
+.panelOpen .panelList li:nth-child(4) .panelLink {
+    transition-delay: 0.35s;
 }

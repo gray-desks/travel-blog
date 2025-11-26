@@ -7,11 +7,11 @@
 :root {
     /* Brand Colors - Refined for a premium Japanese aesthetic */
     --brand-primary: #be1e3e;
-    /* Deep Red (Kurenai) - More elegant than pure red */
+    /* Deep Red (Kurenai) */
     --brand-secondary: #c5a059;
-    /* Gold (Kincha) - Muted gold for elegance */
+    /* Gold (Kincha) */
     --brand-accent: #2c3e50;
-    /* Dark Blue/Grey - For contrast */
+    /* Dark Blue/Grey */
 
     /* Neutral Colors */
     --color-ink: #1a1a1a;
@@ -20,19 +20,21 @@
     /* Secondary text */
     --color-text-muted: #717171;
     /* Muted text */
-    --color-bg-body: #f9f9f9;
-    /* Light grey background */
+    --color-bg-body: #fdfcfb;
+    /* Warm white background */
     --color-bg-surface: #ffffff;
     /* White surface */
-    --color-border: #e0e0e0;
+    --color-border: #e6e6e6;
 
     /* Spacing System (4px grid) */
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
     --space-4: 16px;
+    --space-5: 20px;
     --space-6: 24px;
     --space-8: 32px;
+    --space-10: 40px;
     --space-12: 48px;
     --space-16: 64px;
 
@@ -41,13 +43,13 @@
     --font-sans: 'Noto Sans JP', 'Inter', system-ui, sans-serif;
 
     /* Effects */
-    --radius-sm: 8px;
+    --radius-sm: 6px;
     --radius-md: 12px;
-    --radius-lg: 20px;
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
-    --transition-base: all 0.2s ease-in-out;
+    --radius-lg: 24px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.06), 0 12px 24px rgba(0, 0, 0, 0.03);
+    --transition-base: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* Modern Reset */
@@ -68,9 +70,8 @@ body {
     font-family: var(--font-sans);
     color: var(--color-ink);
     background-color: var(--color-bg-body);
-    background-image:
-        radial-gradient(circle at 10% 10%, rgba(190, 30, 62, 0.03), transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(197, 160, 89, 0.05), transparent 40%);
+    /* Subtle paper texture or simple warm white */
+    background-image: linear-gradient(to bottom, #fffcf8, #fdfcfb);
     background-attachment: fixed;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -159,4 +160,58 @@ img {
     color: var(--color-ink);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
+}
+
+/* Skeleton Loading */
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.img-spinner-wrapper {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    /* Base color */
+}
+
+.img-spinner-wrapper--fill {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.img-spinner-wrapper--intrinsic {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+.img-spinner-wrapper.is-loading {
+    background: linear-gradient(90deg,
+            #f0f0f0 25%,
+            #f8f8f8 50%,
+            #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+}
+
+/* Fade in image */
+.img-spinner-wrapper img {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.img-spinner-wrapper.is-loading img {
+    opacity: 0;
+}
+
+.img-spinner-wrapper.is-loaded img {
+    opacity: 1;
 }

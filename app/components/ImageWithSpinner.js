@@ -27,11 +27,7 @@ export default function ImageWithSpinner({
 
   return (
     <span className={wrapperClasses}>
-      {loading && (
-        <span className={joinClassName('img-spinner', spinnerClassName)} role="status" aria-live="polite" aria-label={spinnerLabel}>
-          <span className="sr-only">{spinnerLabel}</span>
-        </span>
-      )}
+
       <Image
         {...props}
         className={imageClasses || undefined}
@@ -41,7 +37,7 @@ export default function ImageWithSpinner({
           if (typeof onLoadingComplete === 'function') {
             try {
               onLoadingComplete(event?.currentTarget)
-            } catch {}
+            } catch { }
           }
         }}
         onError={(event) => {
