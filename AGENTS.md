@@ -4,6 +4,7 @@
   各セクションの目的を日本語で簡潔に補足しています（内容自体は英語のまま）。
 -->
 
+
 ## Project Structure & Module Organization
 <!-- ディレクトリ構成の概要と役割の一覧です。どこに何を書くかの指針になります。 -->
 - `app/` — Next.js App Router pages and layouts (e.g., `app/articles/[slug]/page.js`).
