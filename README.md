@@ -1,4 +1,4 @@
-# 旅ブログ（Next.js + Sanity）
+# 旅ログ - Japan Travel Log（Next.js + Sanity）
 
 Next.js App Router と Sanity を用いた、読み取り専用の最小構成ブログです。記事は Sanity Studio で作成・更新し、フロントエンドは ISR により自動的に最新化されます。
 

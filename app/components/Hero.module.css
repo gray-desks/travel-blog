@@ -11,7 +11,12 @@
 
 .hero {
     position: relative;
-    background: linear-gradient(135deg, #fffcf8 0%, #fff 100%);
+    position: relative;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        url('/images/hero-bg.webp');
+    background-size: cover;
+    background-position: center;
     border-radius: var(--radius-lg);
     padding: var(--space-12) var(--space-6) var(--space-16);
     box-shadow: var(--shadow-sm);
@@ -64,7 +69,8 @@
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    color: var(--brand-secondary);
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--space-4);
     text-transform: uppercase;
     display: flex;
@@ -96,7 +102,9 @@
     /* Smaller base size for mobile */
     font-weight: 800;
     line-height: 1.4;
-    color: var(--color-ink);
+    line-height: 1.4;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     margin-bottom: var(--space-6);
     letter-spacing: 0.05em;
     font-feature-settings: "palt";
@@ -117,7 +125,9 @@
 .sub {
     font-size: 0.9375rem;
     line-height: 1.8;
-    color: var(--color-text-sub);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 0;
 }
 
