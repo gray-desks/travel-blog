@@ -2,6 +2,8 @@
 // - App Router の layout.js は子ページを受け取り、共通ヘッダー/フッターを適用
 // - Server Component（デフォルト）
 
+import Script from 'next/script'
+
 import './globals.css'
 import styles from './layout.module.css'
 import Header from '@components/Header'
@@ -47,6 +49,20 @@ export default function RootLayout({ children }) {
         )}
       </head>
       <body className={styles.pageLayout}>
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-JY45KB4MTV"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-JY45KB4MTV');
+          `}
+        </Script>
         <Header />
 
         <div className={styles.mainContainer}>
